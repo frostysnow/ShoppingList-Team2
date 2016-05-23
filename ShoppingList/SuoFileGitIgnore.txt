@@ -1,0 +1,3 @@
+
+# Just in case you need to ignore the .suo files remove that hash tag
+*.suo
