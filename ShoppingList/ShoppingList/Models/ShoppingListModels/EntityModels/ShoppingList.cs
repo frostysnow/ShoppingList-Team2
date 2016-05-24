@@ -15,6 +15,7 @@ namespace ShoppingList.Models.ShoppingListModels
         [Required]
         public int ListId                       { get; set; }
         [Required]
+        [ForeignKey("UserId")]
         public int UserId                       { get; set; }
         public string Color                     { get; set; }
         [Required]
@@ -22,6 +23,7 @@ namespace ShoppingList.Models.ShoppingListModels
         public string ListName                  { get; set; }
         public DateTimeOffset CreatedUTC        { get; set; }
         public DateTimeOffset? ModifiedUTC      { get; set; }
+        public virtual ICollection<ShoppingListItem> ShoppingListItems { get; set; }
 
     }
 }
