@@ -45,7 +45,7 @@ namespace ShoppingList.Controllers
 
             if (!_svc.Value.CreateList(vm))
             {
-                ModelState.AddModelError("", "Unable to create note");
+                ModelState.AddModelError("", "Unable to create List");
                 return View(vm);
             }
 
