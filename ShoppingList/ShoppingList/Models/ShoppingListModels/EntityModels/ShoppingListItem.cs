@@ -8,6 +8,33 @@ using System.Web;
 
 namespace ShoppingList.Models.ShoppingListModels
 {
+    public class StringValueAttribute : System.Attribute
+    {
+
+        private string _value;
+
+        public StringValueAttribute(string value)
+        {
+            _value = value;
+        }
+
+        public string Value
+        {
+            get { return _value; }
+        }
+
+    }
+
+    public enum Priority
+    {
+        [StringValue("It can wait.")]
+        ItCanWait = 1, 
+        [StringValue("Need it soon.")]
+        Needitsoon = 2, 
+        [StringValue("Grab it now!")]
+        Grabitnow = 3
+    }
+
     public class ShoppingListItem
     {
         [Key]
@@ -21,6 +48,8 @@ namespace ShoppingList.Models.ShoppingListModels
         [Required]
         [DefaultValue(false)]
         public bool IsChecked                   { get; set; }
+        [Required]
+        public Priority Priority                { get; set; }
         [Required]
         public DateTimeOffset CreatedUtc        { get; set; }
         public DateTimeOffset? ModifiedUtc      { get; set; }
