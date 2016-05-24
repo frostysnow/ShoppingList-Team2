@@ -13,7 +13,6 @@ namespace ShoppingList.Models.ShoppingListModels
         [Key]
         [Required]
         public int ItemId                       { get; set; }
-        [ForeignKey]
         [Required]
         public int ShoppingListId               { get; set; }
         [Required]
