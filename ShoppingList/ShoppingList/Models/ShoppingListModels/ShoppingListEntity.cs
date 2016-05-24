@@ -8,7 +8,7 @@ using System.Web;
 
 namespace ShoppingList.Models.ShoppingListModels
 {
-    public class ShoppingList
+    public class ShoppingListEntity
     {
 
         [Key]

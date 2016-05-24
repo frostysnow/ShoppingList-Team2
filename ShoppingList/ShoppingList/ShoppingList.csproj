@@ -178,12 +178,12 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\ShoppingListModels\IdentityModel.cs" />
-    <Compile Include="Models\ShoppingListModels\ViewModels\ListOfListsViewModel.cs" />
-    <Compile Include="Models\ShoppingListModels\EntityModels\ShoppingList.cs" />
-    <Compile Include="Models\ShoppingListModels\EntityModels\ShoppingListItem.cs" />
-    <Compile Include="Models\ShoppingListModels\EntityModels\ShoppingListNote.cs" />
-    <Compile Include="Models\ShoppingListModels\ViewModels\ShoppingListCreateViewModel.cs" />
-    <Compile Include="Models\ShoppingListModels\ViewModels\ShoppingListViewModel.cs" />
+    <Compile Include="Models\ShoppingListModels\ListOfListsViewModel.cs" />
+    <Compile Include="Models\ShoppingListModels\ShoppingListEntity.cs" />
+    <Compile Include="Models\ShoppingListModels\ShoppingListItem.cs" />
+    <Compile Include="Models\ShoppingListModels\ShoppingListNote.cs" />
+    <Compile Include="Models\ShoppingListModels\ShoppingListCreateViewModel.cs" />
+    <Compile Include="Models\ShoppingListModels\ShoppingListViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ShoppingListService.cs" />
     <Compile Include="Startup.cs" />
@@ -243,6 +243,7 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\ShoppingList\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

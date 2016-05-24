@@ -37,7 +37,7 @@ namespace ShoppingList.Models.ShoppingListModels
                 return new ShoppingListDbContext();
             }
 
-            public DbSet<ShoppingList> Lists { get; set; }
+            public DbSet<ShoppingListEntity> Lists { get; set; }
 
             protected override void OnModelCreating(DbModelBuilder modelBuilder)
             {
