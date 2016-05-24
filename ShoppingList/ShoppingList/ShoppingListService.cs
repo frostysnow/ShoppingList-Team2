@@ -1,4 +1,5 @@
 ﻿using ShoppingList.Models.ShoppingListModels;
+using ShoppingList.Models.ShoppingListModels.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +17,7 @@ namespace ShoppingList
             _userId = userId;
         }
 
-        public IEnumerable<ListOfListsViewModel> GetNotes()
+        public IEnumerable<ListOfListsViewModel> GetLists()
         {
             using (var ctx = new ShoppingListDbContext())
             {
@@ -31,6 +32,24 @@ namespace ShoppingList
                                     ListName = e.ListName,
                                 })
                         .ToArray();
+            }
+        }
+
+        public bool CreateList(ShoppingListCreateViewModel vm)
+        {
+            using (var ctx = new ShoppingListDbContext())
+            {
+                var entity =
+                    new ShoppingListEntity
+                    {
+                        OwnerId = _userId,
+                        Color = vm.Color,
+                        CreatedUTC = DateTimeOffset.UtcNow
+                    };
+
+                ctx.Lists.Add(entity);
+
+                return ctx.SaveChanges() == 1;
             }
         }
     }

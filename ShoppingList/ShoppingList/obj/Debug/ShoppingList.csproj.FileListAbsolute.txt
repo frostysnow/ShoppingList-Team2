@@ -64,6 +64,5 @@ C:\Users\Scott Kelly\Desktop\ShoppingList-Team2\ShoppingList\ShoppingList\bin\Mi
 C:\Users\Scott Kelly\Desktop\ShoppingList-Team2\ShoppingList\ShoppingList\bin\Microsoft.Owin.Security.Google.xml
 C:\Users\Scott Kelly\Desktop\ShoppingList-Team2\ShoppingList\ShoppingList\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\Scott Kelly\Desktop\ShoppingList-Team2\ShoppingList\ShoppingList\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-C:\Users\Scott Kelly\Desktop\ShoppingList-Team2\ShoppingList\ShoppingList\obj\Debug\ShoppingList.csprojResolveAssemblyReference.cache
 C:\Users\Scott Kelly\Desktop\ShoppingList-Team2\ShoppingList\ShoppingList\obj\Debug\ShoppingList.dll
 C:\Users\Scott Kelly\Desktop\ShoppingList-Team2\ShoppingList\ShoppingList\obj\Debug\ShoppingList.pdb
