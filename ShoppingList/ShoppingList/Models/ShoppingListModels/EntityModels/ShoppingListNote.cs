@@ -12,6 +12,7 @@ namespace ShoppingList.Models.ShoppingListModels
         [Key]
         public int NoteId                       { get; set; }
         [Required]
+        [ForeignKey("ShoppingListItem")]
         public int ShoppingListItemId           { get; set; }
         [Required]
         public string Body { get; set; }

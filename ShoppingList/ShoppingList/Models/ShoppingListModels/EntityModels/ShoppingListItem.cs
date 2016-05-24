@@ -14,6 +14,7 @@ namespace ShoppingList.Models.ShoppingListModels
         [Required]
         public int ItemId                       { get; set; }
         [Required]
+        [ForeignKey("ShoppingList")]
         public int ShoppingListId               { get; set; }
         [Required]
         public string Content                   { get; set; }
@@ -23,5 +24,6 @@ namespace ShoppingList.Models.ShoppingListModels
         [Required]
         public DateTimeOffset CreatedUtc        { get; set; }
         public DateTimeOffset? ModifiedUtc      { get; set; }
+        public virtual ShoppingListNote ShoppingListNotes { get; set; }
     }
 }
