@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace ShoppingList.Models.ShoppingListModels.ViewModels
+namespace ShoppingList.Models.ShoppingListModels
 {
     public class ShoppingListCreateViewModel
     {
@@ -14,6 +14,7 @@ namespace ShoppingList.Models.ShoppingListModels.ViewModels
         [DisplayName("Name")]
         public string ListName { get; set; }
         [Required]
+        [RegularExpression("^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$", ErrorMessage = "Must be hex value.")]
         public string Color { get; set; }
 
     }
