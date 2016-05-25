@@ -19,7 +19,6 @@ namespace ShoppingList.Models.ShoppingListModels
         [Required]
         [ForeignKey("UserId")]
         public int UserId                       { get; set; }
-        
         public string Color                     { get; set; }
         [Required]
         [DisplayName("List Name")]
