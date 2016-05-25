@@ -265,7 +265,11 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\ShoppingList\Index.cshtml" />
     <Content Include="Scripts\jquery-2.2.3.min.map" />
+<<<<<<< HEAD
     <Content Include="Views\ShoppingList\Delete.cshtml" />
+=======
+    <Content Include="Views\ShoppingList\Create.cshtml" />
+>>>>>>> eric
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
