@@ -41,8 +41,7 @@ namespace ShoppingList.Models.ShoppingListModels
 
             protected override void OnModelCreating(DbModelBuilder modelBuilder)
             {
-                                                                         modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-
+                modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
                 modelBuilder
                     .Configurations
                         .Add(new IdentityUserLoginConfiguration())
