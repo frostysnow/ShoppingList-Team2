@@ -66,6 +66,9 @@ C:\Users\Scott Kelly\Desktop\ShoppingList-Team2\ShoppingList\ShoppingList\bin\Mi
 C:\Users\Scott Kelly\Desktop\ShoppingList-Team2\ShoppingList\ShoppingList\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\Scott Kelly\Desktop\ShoppingList-Team2\ShoppingList\ShoppingList\obj\Debug\ShoppingList.dll
 C:\Users\Scott Kelly\Desktop\ShoppingList-Team2\ShoppingList\ShoppingList\obj\Debug\ShoppingList.pdb
+C:\Users\Scott Kelly\Desktop\ShoppingList-Team2\ShoppingList\ShoppingList\obj\Debug\ShoppingList.csprojResolveAssemblyReference.cache
+C:\Users\Scott Kelly\Desktop\ShoppingList-Team2\ShoppingList\ShoppingList\obj\Debug\ShoppingList.Migrations.InitialCreate.resources
+C:\Users\Scott Kelly\Desktop\ShoppingList-Team2\ShoppingList\ShoppingList\obj\Debug\ShoppingList.csproj.GenerateResource.Cache
 C:\Users\Deon\Documents\1150 Apprenticeship\ShoppingList-Team2\ShoppingList\ShoppingList\obj\Debug\ShoppingList.csprojResolveAssemblyReference.cache
 C:\Users\Deon\Documents\1150 Apprenticeship\ShoppingList-Team2\ShoppingList\ShoppingList\bin\roslyn\csc.exe
 C:\Users\Deon\Documents\1150 Apprenticeship\ShoppingList-Team2\ShoppingList\ShoppingList\bin\roslyn\csc.exe.config
@@ -149,6 +152,20 @@ C:\Users\Deon\Documents\1150 Apprenticeship\ShoppingList-Team2\ShoppingList\Shop
 C:\Users\Deon\Documents\1150 Apprenticeship\ShoppingList-Team2\ShoppingList\ShoppingList\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\Deon\Documents\1150 Apprenticeship\ShoppingList-Team2\ShoppingList\ShoppingList\obj\Debug\ShoppingList.dll
 C:\Users\Deon\Documents\1150 Apprenticeship\ShoppingList-Team2\ShoppingList\ShoppingList\obj\Debug\ShoppingList.pdb
+C:\Users\Scott Kelly\Desktop\ShoppingList-Team2\ShoppingList\ShoppingList\bin\roslyn\csc.exe.config
+C:\Users\Scott Kelly\Desktop\ShoppingList-Team2\ShoppingList\ShoppingList\bin\roslyn\csc.rsp
+C:\Users\Scott Kelly\Desktop\ShoppingList-Team2\ShoppingList\ShoppingList\bin\roslyn\csi.exe
+C:\Users\Scott Kelly\Desktop\ShoppingList-Team2\ShoppingList\ShoppingList\bin\roslyn\csi.rsp
+C:\Users\Scott Kelly\Desktop\ShoppingList-Team2\ShoppingList\ShoppingList\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\Scott Kelly\Desktop\ShoppingList-Team2\ShoppingList\ShoppingList\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\Scott Kelly\Desktop\ShoppingList-Team2\ShoppingList\ShoppingList\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\Scott Kelly\Desktop\ShoppingList-Team2\ShoppingList\ShoppingList\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\Scott Kelly\Desktop\ShoppingList-Team2\ShoppingList\ShoppingList\bin\roslyn\System.AppContext.dll
+C:\Users\Scott Kelly\Desktop\ShoppingList-Team2\ShoppingList\ShoppingList\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\Scott Kelly\Desktop\ShoppingList-Team2\ShoppingList\ShoppingList\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\Scott Kelly\Desktop\ShoppingList-Team2\ShoppingList\ShoppingList\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\Scott Kelly\Desktop\ShoppingList-Team2\ShoppingList\ShoppingList\bin\roslyn\vbc.exe.config
+C:\Users\Scott Kelly\Desktop\ShoppingList-Team2\ShoppingList\ShoppingList\bin\roslyn\vbc.rsp
 C:\Users\estutson\Desktop\ShoppingList-Team2\ShoppingList\ShoppingList\bin\roslyn\csc.exe
 C:\Users\estutson\Desktop\ShoppingList-Team2\ShoppingList\ShoppingList\bin\roslyn\csc.exe.config
 C:\Users\estutson\Desktop\ShoppingList-Team2\ShoppingList\ShoppingList\bin\roslyn\csc.rsp
