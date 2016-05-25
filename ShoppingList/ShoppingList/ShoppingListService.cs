@@ -24,7 +24,6 @@ namespace ShoppingList
                 return
                     ctx
                         .Lists
-                        .Where(o => o.OwnerId ==_userId)
                         .Select(
                             e =>
                                 new ListOfListsViewModel
