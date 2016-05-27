@@ -17,6 +17,7 @@ namespace ShoppingList.Models.ShoppingListModels
         [DisplayName("Name")]
         public string ListName { get; set; }
         [Required]
+        [RegularExpression("^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$", ErrorMessage = "Color must be in hex format.")]
         public string Color { get; set; }
 
     }
