@@ -17,7 +17,6 @@ namespace ShoppingList.Models.ShoppingListModels
         [Required]
         public Guid OwnerId                     { get; set; }
         [Required]
-        public int UserId                       { get; set; }
         public string Color                     { get; set; }
         [Required]
         [DisplayName("List Name")]
