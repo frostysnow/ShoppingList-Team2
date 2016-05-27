@@ -42,6 +42,7 @@ namespace ShoppingList
                     new ShoppingListEntity
                     {
                         OwnerId = _userId,
+                        ListName = vm.ListName,
                         Color = vm.Color,
                         CreatedUTC = DateTimeOffset.UtcNow
                     };
