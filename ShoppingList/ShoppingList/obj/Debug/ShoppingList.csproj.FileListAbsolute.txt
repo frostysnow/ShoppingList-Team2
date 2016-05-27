@@ -83,3 +83,8 @@ C:\Users\estutson\Documents\ShoppingList-Team2\ShoppingList\ShoppingList\obj\Deb
 C:\Users\estutson\Documents\ShoppingList-Team2\ShoppingList\ShoppingList\obj\Debug\ShoppingList.csproj.GenerateResource.Cache
 C:\Users\estutson\Documents\ShoppingList-Team2\ShoppingList\ShoppingList\obj\Debug\ShoppingList.dll
 C:\Users\estutson\Documents\ShoppingList-Team2\ShoppingList\ShoppingList\obj\Debug\ShoppingList.pdb
+C:\Users\Scott Kelly\Desktop\ShoppingList-Team2\ShoppingList\ShoppingList\obj\Debug\ShoppingList.csprojResolveAssemblyReference.cache
+C:\Users\Scott Kelly\Desktop\ShoppingList-Team2\ShoppingList\ShoppingList\obj\Debug\ShoppingList.Migrations.InitialCreate.resources
+C:\Users\Scott Kelly\Desktop\ShoppingList-Team2\ShoppingList\ShoppingList\obj\Debug\ShoppingList.csproj.GenerateResource.Cache
+C:\Users\Scott Kelly\Desktop\ShoppingList-Team2\ShoppingList\ShoppingList\obj\Debug\ShoppingList.dll
+C:\Users\Scott Kelly\Desktop\ShoppingList-Team2\ShoppingList\ShoppingList\obj\Debug\ShoppingList.pdb

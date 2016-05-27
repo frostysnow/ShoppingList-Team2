@@ -40,7 +40,6 @@ namespace ShoppingList.Models.ShoppingListModels
         [Key]
         [Required]
         public int ItemId                       { get; set; }
-        public string ItemName                  { get; set; }
         [Required]
         public string Content                   { get; set; }
         [Required]

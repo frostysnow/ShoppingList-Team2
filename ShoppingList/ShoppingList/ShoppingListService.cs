@@ -1,5 +1,4 @@
 ﻿using ShoppingList.Models.ShoppingListModels;
-using ShoppingList.Models.ShoppingListModels.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -58,7 +57,7 @@ namespace ShoppingList
 
         public ShoppingListDetailViewModel GetListById(int listId)
         {
-            ShoppingListEntity entity;
+            ShoppingListItem entity;
 
             using (var ctx = new ShoppingListDbContext())
             {
@@ -70,27 +69,27 @@ namespace ShoppingList
 
 
             return
-                new ShoppingListDetailViewModel
+                new ShoppingListItem
                 {
-                    IsChecked = vm.IsChecked,
-                    ListName = vm.ListName,
+                    IsChecked = entity.IsChecked,
+                    Content = entity.Content,
                 };
         }
 
-        public bool AddItem (ShoppingListItemCreateViewModel vm)
-        {
-            using (var ctx = new ShoppingListDbContext())
-            {
-                var entity = new ShoppingListItem
-                {
-                    ItemId = vm.ItemId,
-                    ItemName = vm.ItemName,
-                    Priority = vm.Priority
-                };
-                ctx.Items.Add(entity);
-                return ctx.SaveChanges() == 1;
-            }
-        }
+        //public bool AddItem (ShoppingListItemCreateViewModel vm)
+        //{
+        //    using (var ctx = new ShoppingListDbContext())
+        //    {
+        //        var entity = new ShoppingListItem
+        //        {
+        //            ItemId = vm.ItemId,
+        //            Content = vm.Content,
+        //            Priority = vm.Priority
+        //        };
+        //        ctx.Items.Add(entity);
+        //        return ctx.SaveChanges() == 1;
+        //    }
+        //}
 
         public bool DeleteList(int listId)
         {
@@ -107,22 +106,22 @@ namespace ShoppingList
             }
         }
 
-        public bool UpdateList(ShoppingListEditViewModel)
-        {
-            using (var ctx = new ShoppingListDbContext())
-            {
-                var entity =
-                    ctx
-                        .Lists
-                        .SingleOrDefault(e => e.OwnerId == _userId && e.ListId == vm.ListId);
+        //public bool UpdateList(ShoppingListEditViewModel)
+        //{
+        //    using (var ctx = new ShoppingListDbContext())
+        //    {
+        //        var entity =
+        //            ctx
+        //                .Lists
+        //                .SingleOrDefault(e => e.OwnerId == _userId && e.ListId == vm.ListId);
 
-                entity.ListName = vm.ListName;
-                entity.Color = vm.Color;
-                entity.ModifiedUTC = DateTimeOffset.UtcNow;
+        //        entity.ListName = vm.ListName;
+        //        entity.Color = vm.Color;
+        //        entity.ModifiedUTC = DateTimeOffset.UtcNow;
 
-                return ctx.SaveChanges() == 1;
-            }
-        }
+        //        return ctx.SaveChanges() == 1;
+        //    }
+        //}
 
     }
 }

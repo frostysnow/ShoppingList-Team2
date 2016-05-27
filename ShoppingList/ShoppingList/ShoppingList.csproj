@@ -194,6 +194,7 @@
     <Compile Include="Models\ShoppingListModels\ShoppingListCreateViewModel.cs" />
     <Compile Include="Models\ShoppingListModels\ShoppingListViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ShoppingListItemService.cs" />
     <Compile Include="ShoppingListService.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>

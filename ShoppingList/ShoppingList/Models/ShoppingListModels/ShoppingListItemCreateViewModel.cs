@@ -8,7 +8,8 @@ namespace ShoppingList.Models.ShoppingListModels
     public class ShoppingListItemCreateViewModel
     {
         public int ItemId { get; set; }
-        public string ItemName { get; set; }
+        public string Content { get; set; }
         public Priority Priority { get; set; }
+        public ShoppingListEntity ShoppingList { get; set; }
     }
 }
