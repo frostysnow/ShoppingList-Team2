@@ -57,5 +57,23 @@ namespace ShoppingList.Controllers
             return View(list);
         }
 
+        [HttpGet]
+        [ActionName("Delete")]
+        public ActionResult DeleteGet(int id)
+        {
+            var detail = _svc.Value.GetListById(id);
+
+            return View(detail);
+        }
+
+        [HttpPost]
+        [ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeletePost(int id)
+        {
+            _svc.Value.DeleteList(id);
+
+            return RedirectToAction("Index");
+        }
     }
 }

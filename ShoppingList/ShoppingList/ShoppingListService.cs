@@ -92,5 +92,37 @@ namespace ShoppingList
             }
         }
 
+        public bool DeleteList(int listId)
+        {
+            using (var ctx = new ShoppingListDbContext())
+            {
+                var entity =
+                    ctx
+                        .Lists
+                        .SingleOrDefault(e => e.OwnerId == _userId && e.ListId == listId);
+
+                ctx.Lists.Remove(entity);
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
+        public bool UpdateList(ShoppingListEditViewModel)
+        {
+            using (var ctx = new ShoppingListDbContext())
+            {
+                var entity =
+                    ctx
+                        .Lists
+                        .SingleOrDefault(e => e.OwnerId == _userId && e.ListId == vm.ListId);
+
+                entity.ListName = vm.ListName;
+                entity.Color = vm.Color;
+                entity.ModifiedUTC = DateTimeOffset.UtcNow;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
     }
 }
