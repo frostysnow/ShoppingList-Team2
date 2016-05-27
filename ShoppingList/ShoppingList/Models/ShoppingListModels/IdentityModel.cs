@@ -38,6 +38,7 @@ namespace ShoppingList.Models.ShoppingListModels
             }
 
             public DbSet<ShoppingListEntity> Lists { get; set; }
+            public DbSet<ShoppingListItem> Items { get; set; }
 
             protected override void OnModelCreating(DbModelBuilder modelBuilder)
             {
@@ -47,6 +48,7 @@ namespace ShoppingList.Models.ShoppingListModels
                         .Add(new IdentityUserLoginConfiguration())
                         .Add(new IdentityUserRoleConfiguration());
             }
+            
         }
 
         public class IdentityUserLoginConfiguration : EntityTypeConfiguration<IdentityUserLogin>

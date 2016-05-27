@@ -51,5 +51,11 @@ namespace ShoppingList.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult Details(int id)
+        {
+            var list = _svc.Value.GetListById(id);
+            return View(list);
+        }
+
     }
 }

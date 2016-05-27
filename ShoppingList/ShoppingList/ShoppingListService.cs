@@ -52,5 +52,42 @@ namespace ShoppingList
                 return ctx.SaveChanges() == 1;
             }
         }
+
+        public ShoppingListDetailViewModel GetListById(int listId)
+        {
+            ShoppingListEntity entity;
+
+            using (var ctx = new ShoppingListDbContext())
+            {
+                entity =
+                    ctx
+                        .Lists
+                        .SingleOrDefault(e => e.OwnerId == _userId && e.ListId == listId);
+            }
+
+
+            return
+                new ShoppingListDetailViewModel
+                {
+                    IsChecked = vm.IsChecked,
+                    ListName = vm.ListName,
+                };
+        }
+
+        public bool AddItem (ShoppingListItemCreateViewModel vm)
+        {
+            using (var ctx = new ShoppingListDbContext())
+            {
+                var entity = new ShoppingListItem
+                {
+                    ItemId = vm.ItemId,
+                    ItemName = vm.ItemName,
+                    Priority = vm.Priority
+                };
+                ctx.Items.Add(entity);
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
     }
 }

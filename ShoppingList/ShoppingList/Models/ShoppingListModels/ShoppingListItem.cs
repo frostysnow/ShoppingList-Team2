@@ -10,7 +10,7 @@ namespace ShoppingList.Models.ShoppingListModels
 {
     public class StringValueAttribute : System.Attribute
     {
-
+        //This is creating the StringValue attribute for the enum priority.
         private string _value;
 
         public StringValueAttribute(string value)
@@ -24,7 +24,7 @@ namespace ShoppingList.Models.ShoppingListModels
         }
 
     }
-
+    //Uses StringValueAttribute defined above to format the name of each value.
     public enum Priority
     {
         [StringValue("It can wait.")]
@@ -40,8 +40,7 @@ namespace ShoppingList.Models.ShoppingListModels
         [Key]
         [Required]
         public int ItemId                       { get; set; }
-        [Required]
-        public int ShoppingListId               { get; set; }
+        public string ItemName                  { get; set; }
         [Required]
         public string Content                   { get; set; }
         [Required]

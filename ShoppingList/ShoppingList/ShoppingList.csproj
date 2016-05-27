@@ -172,6 +172,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ShoppingListController.cs" />
+    <Compile Include="Controllers\ShoppingListItemController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -187,6 +188,7 @@
     <Compile Include="Models\ShoppingListModels\ListOfListsViewModel.cs" />
     <Compile Include="Models\ShoppingListModels\ShoppingListEntity.cs" />
     <Compile Include="Models\ShoppingListModels\ShoppingListItem.cs" />
+    <Compile Include="Models\ShoppingListModels\ShoppingListItemCreateViewModel.cs" />
     <Compile Include="Models\ShoppingListModels\ShoppingListNote.cs" />
     <Compile Include="Models\ShoppingListModels\ShoppingListCreateViewModel.cs" />
     <Compile Include="Models\ShoppingListModels\ShoppingListViewModel.cs" />
@@ -270,6 +272,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\ShoppingListItem\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
