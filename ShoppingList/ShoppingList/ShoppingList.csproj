@@ -185,6 +185,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\ShoppingListModels\IdentityModel.cs" />
     <Compile Include="Models\ShoppingListModels\ListOfListsViewModel.cs" />
+    <Compile Include="Models\ShoppingListModels\ShoppingListDetailViewModel.cs" />
     <Compile Include="Models\ShoppingListModels\ShoppingListEntity.cs" />
     <Compile Include="Models\ShoppingListModels\ShoppingListItem.cs" />
     <Compile Include="Models\ShoppingListModels\ShoppingListNote.cs" />
