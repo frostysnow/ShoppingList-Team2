@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 using static ShoppingList.Models.ShoppingListModels.IdentityModel;
 
 namespace ShoppingList
@@ -34,6 +35,8 @@ namespace ShoppingList
             }
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public bool CreateList(ShoppingListCreateViewModel vm)
         {
             using (var ctx = new ShoppingListDbContext())
