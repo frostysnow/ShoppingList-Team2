@@ -5,10 +5,13 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace ShoppingList.Models.ShoppingListModels.ViewModels
+namespace ShoppingList.Models.ShoppingListModels
 {
     public class ShoppingListCreateViewModel
     {
+
+        [Required]
+        public int ListId { get; set; }
 
         [Required]
         [DisplayName("Name")]
