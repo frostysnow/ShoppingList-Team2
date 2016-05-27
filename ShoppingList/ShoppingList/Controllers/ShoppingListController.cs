@@ -38,7 +38,6 @@ namespace ShoppingList.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Create(ShoppingListCreateViewModel vm)
         {
             if (!ModelState.IsValid) return View(vm);
