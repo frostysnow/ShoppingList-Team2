@@ -1,4 +1,5 @@
 ﻿using ShoppingList.Models.ShoppingListModels;
+using ShoppingList.Models.ShoppingListModels.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,8 @@ namespace ShoppingList
 {
     public class ShoppingListService
     {
+        private ShoppingListItemService svc = new ShoppingListItemService();
+
         private readonly Guid _userId;
 
         public ShoppingListService(Guid userId)
@@ -17,7 +20,7 @@ namespace ShoppingList
             _userId = userId;
         }
 
-        public IEnumerable<ListOfListsViewModel> GetLists()
+        public IEnumerable<ShoppingListEntity> GetLists()
         {
             using (var ctx = new ShoppingListDbContext())
             {
@@ -27,7 +30,7 @@ namespace ShoppingList
                         .Where(e => e.OwnerId == _userId)
                         .Select(
                             e =>
-                                new ListOfListsViewModel
+                                new ShoppingListEntity
                                 {
                                     ListId = e.ListId,
                                     ListName = e.ListName,
@@ -58,37 +61,36 @@ namespace ShoppingList
             }
         }
 
-        public ShoppingListDetailViewModel GetListById(int listId)
+        public ShoppingListViewModel GetListById(int id)
         {
             ShoppingListEntity entity;
-
             using (var ctx = new ShoppingListDbContext())
             {
                 entity =
                     ctx
                         .Lists
-                        .SingleOrDefault(e => e.OwnerId == _userId && e.ListId == listId);
+                        .SingleOrDefault(e => e.OwnerId == _userId && e.ListId == id);
             }
 
 
             return
-                new ShoppingListDetailViewModel
+                new ShoppingListViewModel
                 {
                     ListId = entity.ListId,
                     ListName = entity.ListName
                 };
         }
 
-        public bool DeleteList(int listId)
+        public bool DeleteList(int id)
         {
             using (var ctx = new ShoppingListDbContext())
             {
                 var entity =
                     ctx
                         .Lists
-                        .SingleOrDefault(e => e.OwnerId == _userId && e.ListId == listId);
+                        .SingleOrDefault(e => e.OwnerId == _userId && e.ListId == id);
 
-                foreach(ShoppingListItem item in ctx.Items)
+                foreach(ShoppingListItemEntity item in ctx.Items)
                 {
                     if (item.ShoppingListId == entity.ListId)
                         ctx.Items.Remove(item);

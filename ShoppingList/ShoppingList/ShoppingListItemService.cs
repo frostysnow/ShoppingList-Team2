@@ -10,8 +10,10 @@ namespace ShoppingList
 {
     public class ShoppingListItemService
     {
+        public ShoppingListItemService()
+        {}
 
-        public IEnumerable<ShoppingListItem> GetItems(int id)
+        public IEnumerable<ShoppingListItemsViewModel> GetItems(int id)
         {
             using (var ctx = new ShoppingListDbContext())
             {
@@ -21,21 +23,20 @@ namespace ShoppingList
                     .Where(e => e.ShoppingListId == id)
                     .Select(
                         e =>
-                            new ShoppingListItem
+                            new ShoppingListItemsViewModel
                             {
                                 ItemId = e.ItemId,
                                 ShoppingListId = e.ShoppingListId,
                                 Content = e.Content,
                                 IsChecked = e.IsChecked,
-                                Priority = e.Priority
                             })
                         .ToArray();
             }
         }
 
-        public ShoppingListItem GetItemById(int itemId, int listId)
+        public ShoppingListItemsViewModel GetItemById(int itemId, int listId)
         {
-            ShoppingListItem entity;
+            ShoppingListItemEntity entity;
             using (var ctx = new ShoppingListDbContext())
             {
                 entity =
@@ -44,13 +45,12 @@ namespace ShoppingList
                     .SingleOrDefault(e => e.ItemId == itemId && e.ShoppingListId == listId);
             }
             return
-                new ShoppingListItem
+                new ShoppingListItemsViewModel
                 {
                     ItemId = entity.ItemId,
                     ShoppingListId = entity.ShoppingListId,
                     Content = entity.Content,
                     IsChecked = entity.IsChecked,
-                    Priority = entity.Priority
                 };
         }
 
@@ -61,11 +61,11 @@ namespace ShoppingList
             using (var ctx = new ShoppingListDbContext())
             {
                 var entity =
-                    new ShoppingListItem
+                    new ShoppingListItemEntity
                     {
                         ShoppingListId = id,
-                        Content = vm.Content,
-                        Priority = (ShoppingListItem.PriorityLevel)vm.Priority,
+                        Content = vm.Content
+                       //Priority = (ShoppingListItemEntity.PriorityLevel)vm.Priority,
                     };
 
                 ctx.Items.Add(entity);
@@ -74,7 +74,7 @@ namespace ShoppingList
             }
         }
 
-        public bool DeleteItem(int itemId, int listId)
+        public bool DeleteItem(int? itemId, int? listId)
         {
             using (var ctx = new ShoppingListDbContext())
             {
@@ -91,7 +91,7 @@ namespace ShoppingList
         {
             using (var ctx = new ShoppingListDbContext())
             {
-                foreach (ShoppingListItem item in ctx.Items)
+                foreach (ShoppingListItemEntity item in ctx.Items)
                 {
                     ctx.Items.Remove(item);
                 }
