@@ -9,8 +9,7 @@ namespace ShoppingList.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
-            ContextKey = "ShoppingList.Models.ApplicationDbContext";
+            AutomaticMigrationsEnabled = false;
         }
 
         protected override void Seed(ShoppingList.Models.ApplicationDbContext context)
