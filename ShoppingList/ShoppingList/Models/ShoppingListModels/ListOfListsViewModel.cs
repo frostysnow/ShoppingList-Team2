@@ -17,5 +17,8 @@ namespace ShoppingList.Models.ShoppingListModels
         [DisplayName("List Name")]
         public string ListName { get; set; }
 
+        [Required]
+        public string Color { get; set; }
+
     }
 }
