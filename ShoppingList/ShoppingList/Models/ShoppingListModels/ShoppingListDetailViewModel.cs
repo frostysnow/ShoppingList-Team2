@@ -10,9 +10,9 @@ namespace ShoppingList.Models.ShoppingListModels
     public class ShoppingListDetailViewModel
     {
         [Required]
-        public string ItemId { get; set; }
+        public int ListId { get; set; }
         [Required]
-        public string ItemName { get; set; }
+        public string ListName { get; set; }
         [Required]
         [DefaultValue(false)]
         public bool IsChecked { get; set; }

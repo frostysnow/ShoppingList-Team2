@@ -24,11 +24,14 @@ namespace ShoppingList
                 return
                     ctx
                         .Lists
+                        .Where(e => e.OwnerId == _userId)
                         .Select(
                             e =>
                                 new ListOfListsViewModel
                                 {
+                                    ListId = e.ListId,
                                     ListName = e.ListName,
+                                    Color = e.Color
                                 })
                         .ToArray();
             }
@@ -57,7 +60,7 @@ namespace ShoppingList
 
         public ShoppingListDetailViewModel GetListById(int listId)
         {
-            ShoppingListItem entity;
+            ShoppingListEntity entity;
 
             using (var ctx = new ShoppingListDbContext())
             {
@@ -69,27 +72,12 @@ namespace ShoppingList
 
 
             return
-                new ShoppingListItem
+                new ShoppingListDetailViewModel
                 {
-                    IsChecked = entity.IsChecked,
-                    Content = entity.Content,
+                    ListId = entity.ListId,
+                    ListName = entity.ListName
                 };
         }
-
-        //public bool AddItem (ShoppingListItemCreateViewModel vm)
-        //{
-        //    using (var ctx = new ShoppingListDbContext())
-        //    {
-        //        var entity = new ShoppingListItem
-        //        {
-        //            ItemId = vm.ItemId,
-        //            Content = vm.Content,
-        //            Priority = vm.Priority
-        //        };
-        //        ctx.Items.Add(entity);
-        //        return ctx.SaveChanges() == 1;
-        //    }
-        //}
 
         public bool DeleteList(int listId)
         {
@@ -100,28 +88,16 @@ namespace ShoppingList
                         .Lists
                         .SingleOrDefault(e => e.OwnerId == _userId && e.ListId == listId);
 
+                foreach(ShoppingListItem item in ctx.Items)
+                {
+                    if (item.ShoppingListId == entity.ListId)
+                        ctx.Items.Remove(item);
+                }
+
                 ctx.Lists.Remove(entity);
 
                 return ctx.SaveChanges() == 1;
             }
         }
-
-        //public bool UpdateList(ShoppingListEditViewModel)
-        //{
-        //    using (var ctx = new ShoppingListDbContext())
-        //    {
-        //        var entity =
-        //            ctx
-        //                .Lists
-        //                .SingleOrDefault(e => e.OwnerId == _userId && e.ListId == vm.ListId);
-
-        //        entity.ListName = vm.ListName;
-        //        entity.Color = vm.Color;
-        //        entity.ModifiedUTC = DateTimeOffset.UtcNow;
-
-        //        return ctx.SaveChanges() == 1;
-        //    }
-        //}
-
     }
 }
