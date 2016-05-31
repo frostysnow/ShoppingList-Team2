@@ -20,7 +20,7 @@ namespace ShoppingList
             _userId = userId;
         }
 
-        public IEnumerable<ShoppingListEntity> GetLists()
+        public IEnumerable<ListOfListsViewModel> GetLists()
         {
             using (var ctx = new ShoppingListDbContext())
             {
@@ -30,7 +30,7 @@ namespace ShoppingList
                         .Where(e => e.OwnerId == _userId)
                         .Select(
                             e =>
-                                new ShoppingListEntity
+                                new ListOfListsViewModel
                                 {
                                     ListId = e.ListId,
                                     ListName = e.ListName,
