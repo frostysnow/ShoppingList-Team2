@@ -10,9 +10,7 @@ namespace ShoppingList.Models
     public class ShoppingListCreateViewModel
     {
         public int ListId { get; set; }
-
         public Guid OwnerId { get; set; }
-
         [Required]
         [DisplayName("Name")]
         public string ListName { get; set; }

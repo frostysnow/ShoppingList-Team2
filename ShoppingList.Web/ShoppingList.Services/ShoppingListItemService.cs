@@ -62,8 +62,8 @@ namespace ShoppingList.Services
                     new ShoppingListItemEntity
                     {
                         ShoppingListId = id,
-                        Content = vm.Content
-                        //Priority = (ShoppingListItemEntity.PriorityLevel)vm.Priority,
+                        Content = vm.Content,
+                        Priority = (ShoppingListItemEntity.PriorityLevel)vm.Priority,
                     };
 
                 ctx.Items.Add(entity);

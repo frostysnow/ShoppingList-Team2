@@ -28,5 +28,8 @@ namespace ShoppingList.Data
             Grabitnow = 2
         }
         public PriorityLevel Priority { get; set; }
+        [Required]
+        public DateTimeOffset CreatedUtc { get; set; }
+        public DateTimeOffset? ModifiedUtc { get; set; }
     }
 }

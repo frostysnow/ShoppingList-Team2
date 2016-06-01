@@ -39,7 +39,7 @@ namespace ShoppingList.Data
 
             public DbSet<ShoppingListEntity> Lists { get; set; }
             public DbSet<ShoppingListItemEntity> Items { get; set; }
-            //public DbSet<ShoppingListNote> ItemNotes { get; set; }
+            public DbSet<ShoppingListNoteEntity> Notes { get; set; }
 
             protected override void OnModelCreating(DbModelBuilder modelBuilder)
             {
