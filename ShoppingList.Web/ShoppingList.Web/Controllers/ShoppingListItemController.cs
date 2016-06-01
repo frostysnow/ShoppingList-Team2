@@ -31,7 +31,7 @@ namespace ShoppingList.Web.Controllers
         }
 
         [HttpGet]
-        public ActionResult Create()
+        public ActionResult CreateItem()
         {
             try
             {
@@ -48,7 +48,7 @@ namespace ShoppingList.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(ShoppingListItemCreateViewModel vm, int id)
+        public ActionResult CreateItem(ShoppingListItemCreateViewModel vm, int id)
         {
             if (!ModelState.IsValid) return View(vm);
 

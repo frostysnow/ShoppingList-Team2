@@ -155,6 +155,7 @@
     <Compile Include="ShoppingListCreateViewModel.cs" />
     <Compile Include="ShoppingListItemCreateViewModel.cs" />
     <Compile Include="ShoppingListItemsViewModel.cs" />
+    <Compile Include="ShoppingListNoteCreateViewModel.cs" />
     <Compile Include="ShoppingListNoteViewModel.cs" />
     <Compile Include="ShoppingListViewModel.cs" />
   </ItemGroup>
