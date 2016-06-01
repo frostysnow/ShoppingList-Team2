@@ -238,6 +238,7 @@
     <Content Include="Views\ShoppingList\Create.cshtml" />
     <Content Include="Views\ShoppingList\Delete.cshtml" />
     <Content Include="Views\ShoppingListItem\Index.cshtml" />
+    <Content Include="Views\ShoppingListItem\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
