@@ -13,6 +13,8 @@ namespace ShoppingList.Models
         [Required]
         public int ListId { get; set; }
 
+        public Guid OwnerId { get; set; }
+
         [Required]
         [DisplayName("List Name")]
         public string ListName { get; set; }
