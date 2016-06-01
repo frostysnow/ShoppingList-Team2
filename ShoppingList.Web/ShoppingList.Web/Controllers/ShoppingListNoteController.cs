@@ -9,33 +9,33 @@ using System.Web.Mvc;
 
 namespace ShoppingList.Web.Controllers
 {
-    public class ShoppingListItemController : ShoppingListController
+    public class ShoppingListNoteController : ShoppingListItemController
     {
-        private readonly Lazy<ShoppingListItemService> _svc;
+        private readonly Lazy<ShoppingListNoteService> _svc;
 
-        public ShoppingListItemController()
+        public ShoppingListNoteController()
         {
             _svc =
-                new Lazy<ShoppingListItemService>(
+                new Lazy<ShoppingListNoteService>(
                     () =>
                     {
                         var userId = Guid.Parse(User.Identity.GetUserId());
-                        return new ShoppingListItemService();
+                        return new ShoppingListNoteService();
                     });
         }
 
         public ActionResult Index(int id)
         {
-            var Items = _svc.Value.GetItems(id);
+            var Items = _svc.Value.GetNotes(id);
             return View(Items);
         }
 
         [HttpGet]
-        public ActionResult CreateItem()
+        public ActionResult CreateNote()
         {
             try
             {
-                var vm = new ShoppingListItemCreateViewModel();
+                var vm = new ShoppingListNoteCreateViewModel();
 
                 return View(vm);
             }
@@ -48,31 +48,31 @@ namespace ShoppingList.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreateItem(ShoppingListItemCreateViewModel vm, int id)
+        public ActionResult CreateNote(ShoppingListNoteCreateViewModel vm, int id)
         {
             if (!ModelState.IsValid) return View(vm);
 
-            if (!_svc.Value.CreateItem(vm, id))
+            if (!_svc.Value.CreateNote(vm, id))
             {
-                ModelState.AddModelError("", " Unable to add item.");
+                ModelState.AddModelError("", " Unable to add note.");
                 return View(vm);
             }
             return RedirectToAction("Index", new { id = Url.RequestContext.RouteData.Values["id"] });
         }
 
-        public ActionResult DeleteAllItems()
+        public ActionResult DeleteAllNotes()
         {
-            _svc.Value.DeleteAllItems();
+            _svc.Value.DeleteAllNotes();
             return RedirectToAction("Index", "ShoppingList");
         }
 
         [HttpGet]
         [ActionName("Delete")]
-        public ActionResult DeleteGet(int id, int ShoppingListId)
+        public ActionResult DeleteNoteGet(int id, int ShoppingListItemId)
         {
             try
             {
-                var detail = _svc.Value.GetItemById(id, ShoppingListId);
+                var detail = _svc.Value.GetNoteById(id, ShoppingListItemId);
 
                 return View(detail);
             }
@@ -85,9 +85,9 @@ namespace ShoppingList.Web.Controllers
         [HttpPost]
         [ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeletePost(int id, int ShoppingListId)
+        public ActionResult DeleteNotePost(int id, int ShoppingListItemId)
         {
-            _svc.Value.DeleteItem(id, ShoppingListId);
+            _svc.Value.DeleteNote(id, ShoppingListItemId);
             return RedirectToAction("Index", new { id = Url.RequestContext.RouteData.Values["id"] });
         }
     }

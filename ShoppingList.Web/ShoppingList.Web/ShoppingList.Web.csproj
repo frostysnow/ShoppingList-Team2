@@ -172,6 +172,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ShoppingListController.cs" />
     <Compile Include="Controllers\ShoppingListItemController.cs" />
+    <Compile Include="Controllers\ShoppingListNoteController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -243,6 +244,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\ShoppingListItem\" />
+    <Folder Include="Views\ShoppingListNote\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

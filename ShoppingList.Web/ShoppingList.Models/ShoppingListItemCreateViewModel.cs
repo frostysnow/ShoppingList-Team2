@@ -8,6 +8,7 @@ namespace ShoppingList.Models
 {
     public class ShoppingListItemCreateViewModel
     {
+        [Key]
         public int ItemId { get; set; }
         public int ShoppingListId { get; set; }
         public string Content { get; set; }
