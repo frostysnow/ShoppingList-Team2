@@ -25,7 +25,6 @@ namespace ShoppingList.Web.Controllers
                     });
         }
 
-        // GET: ShoppingList
         public ActionResult Index()
         {
             var lists = _svc.Value.GetLists();

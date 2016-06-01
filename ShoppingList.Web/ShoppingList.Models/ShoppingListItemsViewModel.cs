@@ -11,9 +11,7 @@ namespace ShoppingList.Models
     {
         [Required]
         public int ItemId { get; set; }
-        [Required]
         public string Content { get; set; }
-        [Required]
         [DefaultValue(false)]
         public bool IsChecked { get; set; }
         public int ShoppingListId { get; set; }
