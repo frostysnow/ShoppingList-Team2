@@ -237,10 +237,10 @@
     <Content Include="Views\ShoppingList\Index.cshtml" />
     <Content Include="Views\ShoppingList\Create.cshtml" />
     <Content Include="Views\ShoppingList\Delete.cshtml" />
+    <Content Include="Views\ShoppingListItem\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\ShoppingListItem\" />
     <Folder Include="Views\ShoppingListNote\" />
   </ItemGroup>
   <ItemGroup>

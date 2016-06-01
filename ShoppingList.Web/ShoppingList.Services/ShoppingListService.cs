@@ -19,7 +19,7 @@ namespace ShoppingList.Services
             _userId = userId;
         }
 
-        public IEnumerable<ListOfListsViewModel> GetLists()
+        public IEnumerable<ShoppingListViewModel> GetLists()
         {
             using (var ctx = new ShoppingListDbContext())
             {
@@ -29,7 +29,7 @@ namespace ShoppingList.Services
                         .Where(e => e.OwnerId == _userId)
                         .Select(
                             e =>
-                                new ListOfListsViewModel
+                                new ShoppingListViewModel
                                 {
                                     ListId = e.ListId,
                                     ListName = e.ListName,

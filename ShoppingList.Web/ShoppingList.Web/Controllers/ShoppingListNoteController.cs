@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace ShoppingList.Web.Controllers
 {
+    [Authorize]
     public class ShoppingListNoteController : ShoppingListItemController
     {
         private readonly Lazy<ShoppingListNoteService> _svc;
