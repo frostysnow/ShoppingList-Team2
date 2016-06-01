@@ -27,8 +27,8 @@ namespace ShoppingList.Web.Controllers
 
         public ActionResult Index()
         {
-            var lists = _svc.Value.GetLists();
-            return View(lists);
+            var ShoppingLists = _svc.Value.GetLists();
+            return View(ShoppingLists);
         }
 
         [HttpGet]

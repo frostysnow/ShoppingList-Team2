@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ShoppingList.Models.ListOfListsViewModel>
+﻿@model IEnumerable<ShoppingList.Models.ShoppingListViewModel>
 
 @{
     ViewBag.Title = "Index";
@@ -7,7 +7,7 @@
 <h2>Shopping Lists</h2>
 
 <p class="table">
-    @Html.ActionLink("Create New", "Create", "Lists", new { @class = "btn btn-primary" })
+    @Html.ActionLink("Create New", "Create")
 </p>
 
 <table class="table">
@@ -24,7 +24,7 @@
     {
         <tr>
             <td>
-                @Html.ActionLink(item.ListName, "Details", new { id = item.ListId })
+                @Html.ActionLink(item.ListName, "Index", "ShoppingListItem", new { id = item.ListId }, null)
             </td>
             <td>
                 <div class="btn-group btn-group-xs">
@@ -32,7 +32,7 @@
                         <i class="glyphicon glyphicon-cog"></i> <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu">
-                        <li>@Html.ActionLink("Show", "Details", new { id = item.ListId })</li>
+                        <li>@Html.ActionLink("Show", "Index", "ShoppingListItem", new { id = item.ListId }, null)</li>
                         <li>@Html.ActionLink("Delete", "Delete", new { id = item.ListId })</li>
                     </ul>
                 </div>

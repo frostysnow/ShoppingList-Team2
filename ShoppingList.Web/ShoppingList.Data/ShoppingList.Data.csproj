@@ -151,10 +151,34 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IdentityModel.cs" />
+    <Compile Include="Migrations\201605312045242_InitialCreate.cs" />
+    <Compile Include="Migrations\201605312045242_InitialCreate.Designer.cs">
+      <DependentUpon>201605312045242_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606011638198_AddNote.cs" />
+    <Compile Include="Migrations\201606011638198_AddNote.Designer.cs">
+      <DependentUpon>201606011638198_AddNote.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606011750513_ChangedDbBackingModel.cs" />
+    <Compile Include="Migrations\201606011750513_ChangedDbBackingModel.Designer.cs">
+      <DependentUpon>201606011750513_ChangedDbBackingModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ShoppingListEntity.cs" />
     <Compile Include="ShoppingListItemEntity.cs" />
     <Compile Include="ShoppingListNoteEntity.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201605312045242_InitialCreate.resx">
+      <DependentUpon>201605312045242_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606011638198_AddNote.resx">
+      <DependentUpon>201606011638198_AddNote.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606011750513_ChangedDbBackingModel.resx">
+      <DependentUpon>201606011750513_ChangedDbBackingModel.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

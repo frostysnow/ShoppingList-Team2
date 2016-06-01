@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace ShoppingList.Web.Controllers
 {
+    [Authorize]
     public class ShoppingListItemController : ShoppingListController
     {
         private readonly Lazy<ShoppingListItemService> _svc;
@@ -24,10 +25,11 @@ namespace ShoppingList.Web.Controllers
                     });
         }
 
-        public ActionResult Index(int id)
+        [HttpGet]
+        public ActionResult Index(int? id)
         {
-            var Items = _svc.Value.GetItems(id);
-            return View(Items);
+            var ShoppingListItems = _svc.Value.GetItems(id);
+            return View(ShoppingListItems);
         }
 
         [HttpGet]
