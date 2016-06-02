@@ -38,23 +38,23 @@ namespace ShoppingList.Services
                         .ToArray();
             }
         }
-        public IEnumerable<ShoppingListViewModel>GetLists(int? id)
-        {
-            using (var ctx = new ShoppingListDbContext())
-            {
-                return
-                    ctx
-                    .Lists
-                    .Where(e => e.OwnerId == _userId)
-                    .Select(e => new ShoppingListViewModel
-                    {
-                        ListId = e.ListId,
-                        ListName = e.ListName,
-                        Color = e.Color
-                    })
-                    .ToArray();
-            }
-        }
+        //public IEnumerable<ShoppingListViewModel>GetLists(int? id)
+        //{
+        //    using (var ctx = new ShoppingListDbContext())
+        //    {
+        //        return
+        //            ctx
+        //            .Lists
+        //            .Where(e => e.OwnerId == _userId)
+        //            .Select(e => new ShoppingListViewModel
+        //            {
+        //                ListId = e.ListId,
+        //                ListName = e.ListName,
+        //                Color = e.Color
+        //            })
+        //            .ToArray();
+        //    }
+        //}
 
         public bool CreateList(ShoppingListCreateViewModel vm)
         {

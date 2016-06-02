@@ -13,7 +13,7 @@ namespace ShoppingList.Services
         public ShoppingListItemService()
         { }
 
-        public IEnumerable<ShoppingListItemsViewModel> GetItems(int? id)
+        public IEnumerable<ShoppingListItemsViewModel> GetItems(int id)
         {
             using (var ctx = new ShoppingListDbContext())
             {

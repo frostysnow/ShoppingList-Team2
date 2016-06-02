@@ -28,18 +28,18 @@ namespace ShoppingList.Web.Controllers
         }
 
         [HttpGet]
-        public ActionResult ItemIndex(int? id)
+        public ActionResult ItemIndex(int id)
         {
             var Items = _svc.Value.GetItems(id);
             return View(Items);
         }
 
-        [HttpGet]
-        public ActionResult NoteToItemIndex(int id, int ShoppingListItemId)
-        {
-            var Items = _svc2.Value.GetLists(id);
-            return View(Items);
-        }
+        //[HttpGet]
+        //public ActionResult NoteToItemIndex(int id, int ShoppingListItemId)
+        //{
+        //    var Items = _svc2.Value.GetLists(id);
+        //    return View(Items);
+        //}
 
         [HttpGet]
         public ActionResult CreateItem()

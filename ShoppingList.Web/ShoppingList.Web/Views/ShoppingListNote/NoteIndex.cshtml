@@ -31,14 +31,13 @@
                 @Html.DisplayFor(modelItem => item.Body)
             </td>
             <td style="border: 1px solid black; text-align: center;">
-                <button type="submit">@Html.ActionLink("Delete", "DeleteNote", "ShoppingListItem", new { Id = item.NoteId, ShoppingListId = item.ShoppingListItemId }, null)</button>
+                <button type="submit">@Html.ActionLink("Delete", "DeleteNote", "ShoppingListItem", new { Id = item.NoteId, ShoppingLisItemtId = item.ShoppingListItemId }, null)</button>
             </td>
         </tr>
     }
 
 </table>
 
-<!--Neew to remember to fix routing action so that the "Back to Item Button take you back to a view with an ItemId-->
 <p class="table">
-    <button class="btn btn-primary btn-lg">@Html.ActionLink("Back to Item", "ItemIndex", "ShoppingListItem", null, new { style = "color:white" })</button>
+    <button class="btn btn-primary btn-lg">@Html.ActionLink("Back to Item", "ItemIndex", "ShoppingListItem", new { Id = Url.RequestContext.RouteData.Values["id"] }, new { style = "color:white" })</button>
 </p>
