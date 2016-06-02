@@ -27,11 +27,10 @@ namespace ShoppingList.Web.Controllers
 
         public ActionResult Index()
         {
-            var lists = _svc.Value.GetLists();
-            return View(lists);
+            var ShoppingLists = _svc.Value.GetLists();
+            return View(ShoppingLists);
         }
 
-        [HttpGet]
         public ActionResult Create()
         {
             var vm = new ShoppingListCreateViewModel();
@@ -39,7 +38,6 @@ namespace ShoppingList.Web.Controllers
             return View(vm);
         }
 
-        [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(ShoppingListCreateViewModel vm)
         {

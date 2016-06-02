@@ -1,0 +1,43 @@
+﻿@model IEnumerable<ShoppingList.Models.ShoppingListItemsViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div style="display: inline-block;">
+    <h2>Shopping List Items</h2>
+</div>
+
+<div style="display: inline-block; float: right; padding-top: 2.2%;">
+    <button type="button" style="background-color: #ffcc99;">@Html.ActionLink("Add New Item", "Create", "ShoppingListItem", new { Id = Url.RequestContext.RouteData.Values["id"]}, null)</button>
+    <button type="button" style="background-color: #ffcc99;">@Html.ActionLink("Delete all items in DB", "DeleteAllItems")</button>
+</div>
+
+<hr style="border: 1px solid black" />
+
+<table class="table">
+    <tr style="background-color: #ffcc99;  border: 1px solid black;">
+        <th style="border: 1px solid black; text-align: center">
+            @Html.DisplayNameFor(model => model.IsChecked)
+        </th>
+        <th style="border: 1px solid black; text-align: center">
+            @Html.DisplayNameFor(model => model.Content)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr style="border: 1px solid black;">
+            <td style="border: 1px solid black; text-align: center;">
+                @Html.DisplayFor(modelItem => item.IsChecked)
+            </td>
+            <td style="border: 1px solid black; text-align: center;">
+                @Html.DisplayFor(modelItem => item.Content)
+            </td>
+            <td style="border: 1px solid black; text-align: center;">
+                <button type="button">@Html.ActionLink("Delete", "Delete", new { Id = item.ItemId, ShoppingListId = item.ShoppingListId })</button>
+            </td>
+        </tr>
+    }
+
+</table>

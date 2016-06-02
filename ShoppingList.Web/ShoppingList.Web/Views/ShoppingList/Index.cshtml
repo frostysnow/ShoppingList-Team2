@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ShoppingList.Models.ListOfListsViewModel>
+﻿@model IEnumerable<ShoppingList.Models.ShoppingListViewModel>
 
 @{
     ViewBag.Title = "Index";
@@ -7,15 +7,17 @@
 <h2>Shopping Lists</h2>
 
 <p class="table">
-    @Html.ActionLink("Create New", "Create", "Lists", new { @class = "btn btn-primary" })
+    @Html.ActionLink("Create New", "Create")
 </p>
 
+<hr style="border: 1px solid black" />
+
 <table class="table">
-    <tr>
-        <th>
+    <tr style="background-color: #ffcc99; border: 1px solid black;">
+        <th style="border: 1px solid black; text-align: center" class="col-sm-10">
             @Html.DisplayNameFor(model => model.ListName)
         </th>
-        <th>
+        <th style="border: 1px solid black; text-align: center" class="col-sm-2">
             Options
         </th>
     </tr>
@@ -24,17 +26,12 @@
     {
         <tr>
             <td>
-                @Html.ActionLink(item.ListName, "Details", new { id = item.ListId })
+                @Html.ActionLink(item.ListName, "Index", "ShoppingListItem", new { id = item.ListId }, null)
             </td>
             <td>
                 <div class="btn-group btn-group-xs">
-                    <button type="button" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="glyphicon glyphicon-cog"></i> <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li>@Html.ActionLink("Show", "Details", new { id = item.ListId })</li>
-                        <li>@Html.ActionLink("Delete", "Delete", new { id = item.ListId })</li>
-                    </ul>
+                        <button type="button">@Html.ActionLink("Show", "Index", "ShoppingListItem", new { id = item.ListId }, null)</button>
+                        <button type="button">@Html.ActionLink("Delete", "Delete", new { id = item.ListId })</button>
                 </div>
             </td>
         </tr>
