@@ -30,8 +30,7 @@
     {
         <tr style="border: 1px solid black;">
             <td style="border: 1px solid black; text-align: center;">
-                @Html.DisplayFor(modelItem => item.IsChecked)
-            </td>
+                <input type="checkbox" name="DeletedIds" class="CheckBoxId" value="@item.ItemId" />            </td>
             <td style="border: 1px solid black; text-align: center;">
                 @Html.DisplayFor(modelItem => item.Content)
             </td>
@@ -48,11 +47,13 @@
 @section scripts {
     <script language="javascript" type="text/javascript">
         $(document).ready(function () {
-            $('#checkBoxAll').click(function () {
+            $('#checkBoxAll')
+                .css({ "cursor": "pointer" })
+                .click(function () {
                 if ($(this).is(":checked"))
-                    $('.chkCheckBoxId').prop('checked', true);
+                    $('.CheckBoxId').prop('checked', true);
                 else
-                    $('.chkCheckBoxId').prop('checked', false);
+                    $('.CheckBoxId').prop('checked', false);
             });
         });
     </script>
