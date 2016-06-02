@@ -7,7 +7,7 @@
 <h2>Shopping Lists</h2>
 
 <p class="table">
-    @Html.ActionLink("Create New", "Create")
+    <button class="btn btn-primary btn-lg">@Html.ActionLink("Create New", "Create", "ShoppingList", null, new { style = "color:white" })</button>
 </p>
 
 <hr style="border: 1px solid black" />
@@ -25,10 +25,10 @@
     @foreach (var item in Model)
     {
         <tr>
-            <td>
+            <td style="border: 1px solid black">
                 @Html.ActionLink(item.ListName, "ItemIndex", "ShoppingListItem", new { id = item.ListId }, null)
             </td>
-            <td>
+            <td style="border: 1px solid black; text-align: center">
                 <div class="btn-group btn-group-xs">
                         <button type="button">@Html.ActionLink("Show", "ItemIndex", "ShoppingListItem", new { id = item.ListId }, null)</button> 
                         <button type="button">@Html.ActionLink("Delete", "Delete", new { id = item.ListId })</button>
@@ -37,3 +37,5 @@
         </tr>
     }
 </table>
+
+

@@ -25,10 +25,10 @@ namespace ShoppingList.Web.Controllers
                     });
         }
 
-        public ActionResult Index(int id)
+        public ActionResult NoteIndex(int id)
         {
-            var Items = _svc.Value.GetNotes(id);
-            return View(Items);
+            var Notes = _svc.Value.GetNotes(id);
+            return View(Notes);
         }
 
         [HttpGet]
@@ -42,8 +42,8 @@ namespace ShoppingList.Web.Controllers
             }
             catch (ArgumentException e)
             {
-                Console.WriteLine("Argument Exception. Redirecting to Shopping List.");
-                return RedirectToAction("Index", "ShoppingList", null);
+                Console.WriteLine("Argument Exception. Redirecting to Shopping List Items.");
+                return RedirectToAction("ItemIndex", "ShoppingListItem", null);
             }
         }
 
@@ -58,13 +58,13 @@ namespace ShoppingList.Web.Controllers
                 ModelState.AddModelError("", " Unable to add note.");
                 return View(vm);
             }
-            return RedirectToAction("Index", new { id = Url.RequestContext.RouteData.Values["id"] });
+            return RedirectToAction("NoteIndex", new { id = Url.RequestContext.RouteData.Values["id"] });
         }
 
         public ActionResult DeleteAllNotes()
         {
             _svc.Value.DeleteAllNotes();
-            return RedirectToAction("Index", "ShoppingList");
+            return RedirectToAction("ItemIndex", "ShoppingListItem");
         }
 
         [HttpGet]
@@ -79,12 +79,12 @@ namespace ShoppingList.Web.Controllers
             }
             catch (ArgumentException e)
             {
-                return RedirectToAction("Index", "ShoppingList", null);
+                return RedirectToAction("ItemIndex", "ShoppingListItem", null);
             }
         }
 
         [HttpPost]
-        [ActionName("Delete")]
+        [ActionName("DeleteNote")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteNotePost(int id, int ShoppingListItemId)
         {

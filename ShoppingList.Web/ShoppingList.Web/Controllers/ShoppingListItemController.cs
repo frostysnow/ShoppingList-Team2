@@ -14,6 +14,8 @@ namespace ShoppingList.Web.Controllers
     {
         private readonly Lazy<ShoppingListItemService> _svc;
 
+        private readonly Lazy<ShoppingListService> _svc2;
+
         public ShoppingListItemController()
         {
             _svc =
@@ -28,12 +30,19 @@ namespace ShoppingList.Web.Controllers
         [HttpGet]
         public ActionResult ItemIndex(int? id)
         {
-            var ShoppingListItems = _svc.Value.GetItems(id);
-            return View(ShoppingListItems);
+            var Items = _svc.Value.GetItems(id);
+            return View(Items);
         }
 
         [HttpGet]
-        public ActionResult CreateList()
+        public ActionResult NoteToItemIndex(int id, int ShoppingListItemId)
+        {
+            var Items = _svc2.Value.GetLists(id);
+            return View(Items);
+        }
+
+        [HttpGet]
+        public ActionResult CreateItem()
         {
             try
             {
@@ -50,7 +59,7 @@ namespace ShoppingList.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreateList(ShoppingListItemCreateViewModel vm, int id)
+        public ActionResult CreateItem(ShoppingListItemCreateViewModel vm, int id)
         {
             if (!ModelState.IsValid) return View(vm);
 
