@@ -11,21 +11,19 @@
 <div>
     <hr />
     <dl class="dl-horizontal">
-        @Html.DisplayNameFor(model => model.ListName)
+        <dt>
+            @Html.DisplayNameFor(model => model.ListName)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.ListName)
         </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.Color)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.Color)
         </dd>
-
+    </dl>
         @using (Html.BeginForm())
         {
             @Html.AntiForgeryToken()

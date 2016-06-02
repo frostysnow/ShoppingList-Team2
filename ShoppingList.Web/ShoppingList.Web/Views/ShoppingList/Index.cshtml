@@ -26,11 +26,11 @@
     {
         <tr>
             <td>
-                @Html.ActionLink(item.ListName, "Index", "ShoppingListItem", new { id = item.ListId }, null)
+                @Html.ActionLink(item.ListName, "ItemIndex", "ShoppingListItem", new { id = item.ListId }, null)
             </td>
             <td>
                 <div class="btn-group btn-group-xs">
-                        <button type="button">@Html.ActionLink("Show", "Index", "ShoppingListItem", new { id = item.ListId }, null)</button>
+                        <button type="button">@Html.ActionLink("Show", "ItemIndex", "ShoppingListItem", new { id = item.ListId }, null)</button> 
                         <button type="button">@Html.ActionLink("Delete", "Delete", new { id = item.ListId })</button>
                 </div>
             </td>

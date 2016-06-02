@@ -203,6 +203,7 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Views\ShoppingList\Delete.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -236,9 +237,9 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\ShoppingList\Index.cshtml" />
     <Content Include="Views\ShoppingList\Create.cshtml" />
-    <Content Include="Views\ShoppingList\Delete.cshtml" />
-    <Content Include="Views\ShoppingListItem\Index.cshtml" />
-    <Content Include="Views\ShoppingListItem\Create.cshtml" />
+    <Content Include="Views\ShoppingListItem\ItemIndex.cshtml" />
+    <Content Include="Views\ShoppingListItem\CreateList.cshtml" />
+    <Content Include="Views\ShoppingListItem\DeleteItem.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
