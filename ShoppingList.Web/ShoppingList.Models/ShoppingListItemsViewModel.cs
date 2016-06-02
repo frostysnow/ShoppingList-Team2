@@ -15,5 +15,15 @@ namespace ShoppingList.Models
         [DefaultValue(false)]
         public bool IsChecked { get; set; }
         public int ShoppingListId { get; set; }
+        public enum PriorityLevel
+        {
+            [Display(Name = "It can wait")]
+            ItCanWait = 0,
+            [Display(Name = "Need it soon")]
+            NeedItSoon,
+            [Display(Name = "Grab it now")]
+            GrabItNow
+        }
+        public PriorityLevel Priority { get; set; }
     }
 }

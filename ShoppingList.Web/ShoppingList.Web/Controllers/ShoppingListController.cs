@@ -25,12 +25,14 @@ namespace ShoppingList.Web.Controllers
                     });
         }
 
+        [HttpGet]
         public ActionResult Index()
         {
-            var ShoppingLists = _svc.Value.GetLists();
-            return View(ShoppingLists);
+            var Lists = _svc.Value.GetLists();
+            return View(Lists);
         }
 
+        [HttpGet]
         public ActionResult Create()
         {
             var vm = new ShoppingListCreateViewModel();
@@ -38,6 +40,7 @@ namespace ShoppingList.Web.Controllers
             return View(vm);
         }
 
+        [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(ShoppingListCreateViewModel vm)
         {
@@ -50,12 +53,6 @@ namespace ShoppingList.Web.Controllers
             }
 
             return RedirectToAction("Index");
-        }
-
-        public ActionResult Details(int id)
-        {
-            var list = _svc.Value.GetListById(id);
-            return View(list);
         }
 
         [HttpGet]
