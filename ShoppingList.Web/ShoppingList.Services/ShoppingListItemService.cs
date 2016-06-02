@@ -73,6 +73,25 @@ namespace ShoppingList.Services
             }
         }
 
+        public bool EditItem(ShoppingListItemEditViewModel vm)
+        {
+            using (var ctx = new ShoppingListDbContext())
+            {
+                var entity =
+                    ctx
+                    .Items
+                    .SingleOrDefault(e => e.ItemId == vm.ItemId && e.ShoppingListId == vm.ShoppingListId);
+
+                entity.ItemId = vm.ItemId;
+                entity.ShoppingListId = vm.ShoppingListId;
+                entity.Content = vm.Content;
+                entity.Priority = (ShoppingListItemEntity.PriorityLevel)vm.Priority;
+                entity.ModifiedUtc = DateTimeOffset.Now;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
         public bool DeleteItem(int? itemId, int? listId)
         {
             using (var ctx = new ShoppingListDbContext())
