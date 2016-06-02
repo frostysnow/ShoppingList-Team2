@@ -64,6 +64,7 @@ namespace ShoppingList.Services
                         ShoppingListId = id,
                         Content = vm.Content,
                         Priority = (ShoppingListItemEntity.PriorityLevel)vm.Priority,
+                        CreatedUtc = DateTimeOffset.Now,
                     };
 
                 ctx.Items.Add(entity);

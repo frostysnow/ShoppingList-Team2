@@ -26,14 +26,14 @@ namespace ShoppingList.Web.Controllers
         }
 
         [HttpGet]
-        public ActionResult Index(int? id)
+        public ActionResult ItemIndex(int? id)
         {
             var ShoppingListItems = _svc.Value.GetItems(id);
             return View(ShoppingListItems);
         }
 
         [HttpGet]
-        public ActionResult Create()
+        public ActionResult CreateList()
         {
             try
             {
@@ -50,7 +50,7 @@ namespace ShoppingList.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(ShoppingListItemCreateViewModel vm, int id)
+        public ActionResult CreateList(ShoppingListItemCreateViewModel vm, int id)
         {
             if (!ModelState.IsValid) return View(vm);
 
@@ -59,7 +59,7 @@ namespace ShoppingList.Web.Controllers
                 ModelState.AddModelError("", " Unable to add item.");
                 return View(vm);
             }
-            return RedirectToAction("Index", new { id = Url.RequestContext.RouteData.Values["id"] });
+            return RedirectToAction("ItemIndex", new { id = Url.RequestContext.RouteData.Values["id"] });
         }
 
         public ActionResult DeleteAllItems()
@@ -69,7 +69,7 @@ namespace ShoppingList.Web.Controllers
         }
 
         [HttpGet]
-        [ActionName("Delete")]
+        [ActionName("DeleteItem")]
         public ActionResult DeleteGet(int id, int ShoppingListId)
         {
             try
@@ -80,17 +80,17 @@ namespace ShoppingList.Web.Controllers
             }
             catch (ArgumentException e)
             {
-                return RedirectToAction("Index", "ShoppingList", null);
+                return RedirectToAction("ItemIndex", "ShoppingList", null);
             }
         }
 
         [HttpPost]
-        [ActionName("Delete")]
+        [ActionName("DeleteItem")]
         [ValidateAntiForgeryToken]
         public ActionResult DeletePost(int id, int ShoppingListId)
         {
             _svc.Value.DeleteItem(id, ShoppingListId);
-            return RedirectToAction("Index", new { id = Url.RequestContext.RouteData.Values["id"] });
+            return RedirectToAction("ItemIndex", new { id = Url.RequestContext.RouteData.Values["id"] });
         }
     }
 }
