@@ -238,12 +238,15 @@
     <Content Include="Views\ShoppingList\Index.cshtml" />
     <Content Include="Views\ShoppingList\Create.cshtml" />
     <Content Include="Views\ShoppingListItem\ItemIndex.cshtml" />
-    <Content Include="Views\ShoppingListItem\CreateList.cshtml" />
+    <Content Include="Views\ShoppingListItem\CreateItem.cshtml" />
     <Content Include="Views\ShoppingListItem\DeleteItem.cshtml" />
+    <Content Include="Views\ShoppingListNote\NoteIndex.cshtml" />
+    <Content Include="Views\ShoppingListNote\CreateNote.cshtml" />
+    <Content Include="Views\ShoppingListNote\DeleteNote.cshtml" />
+    <Content Include="Views\ShoppingListItem\EditItem.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\ShoppingListNote\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

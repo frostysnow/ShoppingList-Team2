@@ -14,6 +14,8 @@ namespace ShoppingList.Web.Controllers
     {
         private readonly Lazy<ShoppingListItemService> _svc;
 
+        private readonly Lazy<ShoppingListService> _svc2;
+
         public ShoppingListItemController()
         {
             _svc =
@@ -26,14 +28,21 @@ namespace ShoppingList.Web.Controllers
         }
 
         [HttpGet]
-        public ActionResult ItemIndex(int? id)
+        public ActionResult ItemIndex(int id)
         {
-            var ShoppingListItems = _svc.Value.GetItems(id);
-            return View(ShoppingListItems);
+            var Items = _svc.Value.GetItems(id);
+            return View(Items);
         }
 
+        //[HttpGet]
+        //public ActionResult NoteToItemIndex(int id, int ShoppingListItemId)
+        //{
+        //    var Items = _svc2.Value.GetLists(id);
+        //    return View(Items);
+        //}
+
         [HttpGet]
-        public ActionResult CreateList()
+        public ActionResult CreateItem()
         {
             try
             {
@@ -50,7 +59,7 @@ namespace ShoppingList.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreateList(ShoppingListItemCreateViewModel vm, int id)
+        public ActionResult CreateItem(ShoppingListItemCreateViewModel vm, int id)
         {
             if (!ModelState.IsValid) return View(vm);
 
@@ -60,6 +69,33 @@ namespace ShoppingList.Web.Controllers
                 return View(vm);
             }
             return RedirectToAction("ItemIndex", new { id = Url.RequestContext.RouteData.Values["id"] });
+        }
+
+        [HttpGet]
+        public ActionResult EditItem(int id, int ShoppingListId)
+        {
+            var detail = _svc.Value.GetItemById(id, ShoppingListId);
+            var list =
+                new ShoppingListItemEditViewModel
+                {
+                    ItemId = detail.ItemId,
+                    ShoppingListId = detail.ShoppingListId,
+                    Content = detail.Content,
+                    Priority = (ShoppingListItemEditViewModel.PriorityLevel)detail.Priority
+                };
+            return View(list);
+        }
+
+        [HttpPost]
+        public ActionResult EditItem(ShoppingListItemEditViewModel vm, int id)
+        {
+            if (!ModelState.IsValid) return View(vm);
+            if (!_svc.Value.EditItem(vm))
+            {
+                ModelState.AddModelError("", "Unable to update note.");
+                return View(vm);
+            }
+            return RedirectToAction("ItemIndex", new { id = vm.ShoppingListId });
         }
 
         public ActionResult DeleteAllItems()

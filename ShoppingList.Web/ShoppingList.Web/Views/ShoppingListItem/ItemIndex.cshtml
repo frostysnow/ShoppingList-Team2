@@ -9,8 +9,8 @@
 </div>
 
 <div style="display: inline-block; float: right; padding-top: 2.2%;">
-    <button type="button" style="background-color: #ffcc99;">@Html.ActionLink("Add New Item", "CreateList", "ShoppingListItem", new { Id = Url.RequestContext.RouteData.Values["id"]}, null)</button>
-    <button type="button" style="background-color: #ffcc99;">@Html.ActionLink("Delete all items in DB", "DeleteAllItems")</button>
+    <button type="button" style="background-color: #ffcc99;">@Html.ActionLink("Add New Item", "CreateItem", "ShoppingListItem", new { Id = Url.RequestContext.RouteData.Values["id"]}, null)</button>
+    <button type="button" style="background-color: #ffcc99;">@Html.ActionLink("Delete all items", "DeleteAllItems")</button>
 </div>
 
 <hr style="border: 1px solid black" />
@@ -18,8 +18,11 @@
 <table class="table">
     <tr style="background-color: #ffcc99;  border: 1px solid black;">
         <th style="border: 1px solid black; text-align: center" class="col-sm-1"></th>
-        <th style="border: 1px solid black; text-align: center" class="col-lg-10">
+        <th style="border: 1px solid black; text-align: center" class="col-lg-6">
             @Html.DisplayNameFor(model => model.Content)
+        </th>
+        <th style="border: 1px solid black; text-align: center" class="col-lg-3">
+            @Html.DisplayNameFor(model => model.Priority)
         </th>
         <th style="border: 1px solid black; text-align: center">
             Options
@@ -30,17 +33,25 @@
     {
         <tr style="border: 1px solid black;">
             <td style="border: 1px solid black; text-align: center;">
-                <input type="checkbox" name="DeletedIds" class="CheckBoxId" value="@item.ItemId" />            </td>
+                <input type="checkbox" name="DeletedIds" class="CheckBoxId" value="@item.ItemId" /></td>
             <td style="border: 1px solid black; text-align: center;">
                 @Html.DisplayFor(modelItem => item.Content)
             </td>
             <td style="border: 1px solid black; text-align: center;">
-                <button type="submit">@Html.ActionLink("Delete", "DeleteItem", "ShoppingListItem", new { Id = item.ItemId, ShoppingListId = item.ShoppingListId }, null)</button>
+                @Html.DisplayFor(modelItem => item.Priority)
+            </td>
+            <td style="border: 1px solid black; text-align: center;">
+                <button type="submit">@Html.ActionLink("Notes", "NoteIndex", "ShoppingListNote", new { id = item.ItemId, ShoppingListId = item.ShoppingListId }, null)</button>
+                <button type="submit">@Html.ActionLink("Edit", "EditItem", "ShoppingListItem", new { id = item.ItemId, ShoppingListId = item.ShoppingListId }, null)</button>
+                <button type="submit">@Html.ActionLink("Delete", "DeleteItem", "ShoppingListItem", new { id = item.ItemId, ShoppingListId = item.ShoppingListId }, null)</button>
             </td>
         </tr>
     }
-
 </table>
+
+<p class="table">
+    <button class="btn btn-primary btn-lg">@Html.ActionLink("Back to Shopping Lists", "Index", "ShoppingList", new { Id = Url.RequestContext.RouteData.Values["id"] }, new { style = "color:white" })</button>
+</p>
 
 @{Html.EndForm();}
 

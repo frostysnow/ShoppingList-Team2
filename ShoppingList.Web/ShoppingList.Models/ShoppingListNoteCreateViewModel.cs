@@ -12,5 +12,6 @@ namespace ShoppingList.Models
         public int NoteId { get; set; }
         public int ShoppingListItemId { get; set; }
         public string Body { get; set; }
+        public DateTimeOffset CreatedUtc { get; set; }
     }
 }

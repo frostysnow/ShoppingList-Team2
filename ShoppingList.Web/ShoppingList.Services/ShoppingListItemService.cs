@@ -13,7 +13,7 @@ namespace ShoppingList.Services
         public ShoppingListItemService()
         { }
 
-        public IEnumerable<ShoppingListItemsViewModel> GetItems(int? id)
+        public IEnumerable<ShoppingListItemsViewModel> GetItems(int id)
         {
             using (var ctx = new ShoppingListDbContext())
             {
@@ -68,6 +68,25 @@ namespace ShoppingList.Services
                     };
 
                 ctx.Items.Add(entity);
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
+        public bool EditItem(ShoppingListItemEditViewModel vm)
+        {
+            using (var ctx = new ShoppingListDbContext())
+            {
+                var entity =
+                    ctx
+                    .Items
+                    .SingleOrDefault(e => e.ItemId == vm.ItemId && e.ShoppingListId == vm.ShoppingListId);
+
+                entity.ItemId = vm.ItemId;
+                entity.ShoppingListId = vm.ShoppingListId;
+                entity.Content = vm.Content;
+                entity.Priority = (ShoppingListItemEntity.PriorityLevel)vm.Priority;
+                entity.ModifiedUtc = DateTimeOffset.Now;
 
                 return ctx.SaveChanges() == 1;
             }
