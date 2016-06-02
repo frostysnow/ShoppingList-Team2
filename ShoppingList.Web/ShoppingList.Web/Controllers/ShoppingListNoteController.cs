@@ -68,8 +68,8 @@ namespace ShoppingList.Web.Controllers
         }
 
         [HttpGet]
-        [ActionName("Delete")]
-        public ActionResult DeleteNoteGet(int id, int ShoppingListItemId)
+        [ActionName("DeleteNote")]
+        public ActionResult DeleteGet(int id, int ShoppingListItemId)
         {
             try
             {
@@ -79,17 +79,17 @@ namespace ShoppingList.Web.Controllers
             }
             catch (ArgumentException e)
             {
-                return RedirectToAction("ItemIndex", "ShoppingListItem", null);
+                return RedirectToAction("NoteIndex", "ShoppingListNote", null);
             }
         }
 
         [HttpPost]
         [ActionName("DeleteNote")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteNotePost(int id, int ShoppingListItemId)
+        public ActionResult DeletePost(int id, int ShoppingListItemId)
         {
             _svc.Value.DeleteNote(id, ShoppingListItemId);
-            return RedirectToAction("Index", new { id = Url.RequestContext.RouteData.Values["id"] });
+            return RedirectToAction("NoteIndex", new { id = Url.RequestContext.RouteData.Values["id"] });
         }
     }
 }

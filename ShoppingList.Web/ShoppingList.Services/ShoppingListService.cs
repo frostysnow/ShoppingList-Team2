@@ -83,8 +83,6 @@ namespace ShoppingList.Services
                         .Lists
                         .SingleOrDefault(e => e.OwnerId == _userId && e.ListId == id);
             }
-
-
             return
                 new ShoppingListViewModel
                 {
@@ -101,15 +99,12 @@ namespace ShoppingList.Services
                     ctx
                         .Lists
                         .SingleOrDefault(e => e.OwnerId == _userId && e.ListId == id);
-
                 foreach (ShoppingListItemEntity item in ctx.Items)
                 {
                     if (item.ShoppingListId == entity.ListId)
                         ctx.Items.Remove(item);
                 }
-
                 ctx.Lists.Remove(entity);
-
                 return ctx.SaveChanges() == 1;
             }
         }

@@ -10,7 +10,7 @@
 
 <div style="display: inline-block; float: right; padding-top: 2.2%;">
     <button type="button" style="background-color: #ffcc99;">@Html.ActionLink("Add New Item", "CreateItem", "ShoppingListItem", new { Id = Url.RequestContext.RouteData.Values["id"]}, null)</button>
-    <button type="button" style="background-color: #ffcc99;">@Html.ActionLink("Delete all items in DB", "DeleteAllItems")</button>
+    <button type="button" style="background-color: #ffcc99;">@Html.ActionLink("Delete all items", "DeleteAllItems")</button>
 </div>
 
 <hr style="border: 1px solid black" />
@@ -35,8 +35,8 @@
                 @Html.DisplayFor(modelItem => item.Content)
             </td>
             <td style="border: 1px solid black; text-align: center;">
-                <button type="submit">@Html.ActionLink("Delete", "DeleteItem", "ShoppingListItem", new { Id = item.ItemId, ShoppingListId = item.ShoppingListId }, null)</button>
-                <button type="submit">@Html.ActionLink("Notes", "NoteIndex", "ShoppingListNote", new { Id = item.ItemId, ShoppingListId = item.ShoppingListId }, null)</button>
+                <button type="submit">@Html.ActionLink("Delete", "DeleteItem", "ShoppingListItem", new { id = item.ItemId, ShoppingListId = item.ShoppingListId }, null)</button>
+                <button type="submit">@Html.ActionLink("Notes", "NoteIndex", "ShoppingListNote", new { id = item.ItemId, ShoppingListId = item.ShoppingListId }, null)</button>
             </td>
         </tr>
     }

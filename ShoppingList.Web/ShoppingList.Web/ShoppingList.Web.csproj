@@ -242,6 +242,7 @@
     <Content Include="Views\ShoppingListItem\DeleteItem.cshtml" />
     <Content Include="Views\ShoppingListNote\NoteIndex.cshtml" />
     <Content Include="Views\ShoppingListNote\CreateNote.cshtml" />
+    <Content Include="Views\ShoppingListNote\DeleteNote.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
