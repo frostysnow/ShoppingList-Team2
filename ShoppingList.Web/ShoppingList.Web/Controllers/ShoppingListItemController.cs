@@ -129,11 +129,11 @@ namespace ShoppingList.Web.Controllers
             return RedirectToAction("ItemIndex", new { id = Url.RequestContext.RouteData.Values["id"] });
         }
 
-        public ActionResult DeleteChecked(int[] CheckedIds)
+        public ActionResult DeleteChecked(int id, int[] CheckedIds)
         {
             if (CheckedIds != null && CheckedIds.Length > 0)
                 _svc.Value.DeleteCheckedIds(CheckedIds);
-            return RedirectToAction("Index", "ShoppingList");
+            return RedirectToAction("ItemIndex/" + id);
         }
     }
 }
