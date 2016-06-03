@@ -133,7 +133,7 @@ namespace ShoppingList.Web.Controllers
         {
             if (CheckedIds != null && CheckedIds.Length > 0)
                 _svc.Value.DeleteCheckedIds(CheckedIds);
-            return RedirectToAction("ItemIndex", "ShoppingListItem");
+            return RedirectToAction("Index", "ShoppingList");
         }
     }
 }
