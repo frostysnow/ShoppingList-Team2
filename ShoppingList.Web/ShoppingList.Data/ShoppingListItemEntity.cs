@@ -16,11 +16,8 @@ namespace ShoppingList.Data
         public bool IsChecked { get; set; }
         public enum PriorityLevel
         {
-            [Display(Name = "It can wait.")]
             ItCanWait = 0,
-            [Display(Name = "Need it soon.")]
             Needitsoon = 1,
-            [Display(Name = "Grab it now!")]
             Grabitnow = 2
         }
         public PriorityLevel Priority { get; set; }

@@ -19,9 +19,9 @@ namespace ShoppingList.Models
             [Display(Name = "It can wait")]
             ItCanWait = 0,
             [Display(Name = "Need it soon")]
-            NeedItSoon,
+            NeedItSoon = 1,
             [Display(Name = "Grab it now")]
-            GrabItNow
+            GrabItNow = 2
         }
         public PriorityLevel Priority { get; set; }
         public DateTimeOffset CreatedUtc { get; set; }
