@@ -45,7 +45,7 @@
                 @Html.DisplayFor(modelItem => item.Priority)
             </td>
             <td style="border: 1px solid black; text-align: center;">
-                <button type="submit">@Html.ActionLink("Notes", "NoteIndex", "ShoppingListNote", new { id = item.ItemId, ShoppingListId = item.ShoppingListId }, null)</button>
+                <button type="submit">@Html.ActionLink("Notes", "NoteIndex", "ShoppingListNote", new { id = item.ShoppingListId}, null)</button>
                 <button type="submit">@Html.ActionLink("Edit", "EditItem", "ShoppingListItem", new { id = item.ItemId, ShoppingListId = item.ShoppingListId }, null)</button>
                 <button type="submit">@Html.ActionLink("Delete", "DeleteItem", "ShoppingListItem", new { id = item.ItemId, ShoppingListId = item.ShoppingListId }, null)</button>
             </td>

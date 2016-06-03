@@ -29,6 +29,7 @@ namespace ShoppingList.Services
                                 ShoppingListId = e.ShoppingListId,
                                 Content = e.Content,
                                 IsChecked = e.IsChecked,
+                                Priority = (ShoppingListItemsViewModel.PriorityLevel)e.Priority
                             })
                         .ToArray();
             }
