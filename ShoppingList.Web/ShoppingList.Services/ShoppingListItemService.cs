@@ -13,24 +13,58 @@ namespace ShoppingList.Services
         public ShoppingListItemService()
         { }
 
-        public IEnumerable<ShoppingListItemsViewModel> GetItems(int? id)
+        public IEnumerable<ShoppingListItemsViewModel> GetItems(int? id, ShoppingListItemCriteria criteria)
         {
             using (var ctx = new ShoppingListDbContext())
             {
-                return
-                    ctx
-                    .Items
-                    .Where(e => e.ShoppingListId == id)
-                    .Select(
-                        e =>
-                            new ShoppingListItemsViewModel
-                            {
-                                ItemId = e.ItemId,
-                                ShoppingListId = e.ShoppingListId,
-                                Content = e.Content,
-                                IsChecked = e.IsChecked,
-                            })
-                        .ToArray();
+                var listItems = ctx
+                        .Items
+                        .Where(e => e.ShoppingListId == id);
+
+                switch (criteria.SortOption)
+                {
+                    case ShoppingListItemSortOption.ItemAsc:
+                        listItems = listItems.OrderBy(i => i.ItemId);
+                        break;
+                    case ShoppingListItemSortOption.ItemDesc:
+                        listItems = listItems.OrderByDescending(i => i.ItemId);
+                        break;
+                    default:
+                        listItems = listItems.OrderBy(i => i.ItemId);
+                        break;
+                }
+
+                return listItems.Select(
+                     e =>
+                         new ShoppingListItemsViewModel
+                         {
+                             ItemId = e.ItemId,
+                             ShoppingListId = e.ShoppingListId,
+                             Content = e.Content,
+                             IsChecked = e.IsChecked,
+                         }).ToList();
+
+
+
+
+
+
+
+
+                //return
+                //    ctx
+                //    .Items
+                //    .Where(e => e.ShoppingListId == id)
+                //    .Select(
+                //        e =>
+                //            new ShoppingListItemsViewModel
+                //            {
+                //                ItemId = e.ItemId,
+                //                ShoppingListId = e.ShoppingListId,
+                //                Content = e.Content,
+                //                IsChecked = e.IsChecked,
+                //            })
+                //        .ToArray();
             }
         }
 

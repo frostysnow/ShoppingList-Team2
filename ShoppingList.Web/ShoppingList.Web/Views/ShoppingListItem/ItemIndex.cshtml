@@ -1,4 +1,5 @@
-﻿@model IEnumerable<ShoppingList.Models.ShoppingListItemsViewModel>
+﻿@using ShoppingList.Models
+@model ShoppingList.Models.ShoppingListItemPageViewModel
 
 @{
     ViewBag.Title = "Index";
@@ -19,14 +20,14 @@
     <tr style="background-color: #ffcc99;  border: 1px solid black;">
         <th style="border: 1px solid black; text-align: center" class="col-sm-1"></th>
         <th style="border: 1px solid black; text-align: center" class="col-lg-10">
-            @Html.DisplayNameFor(model => model.Content)
+           @Html.ActionLink("Content", "ItemIndex", new { SortOption = Model.Criteria.SortOption == ShoppingListItemSortOption.ItemAsc ? ShoppingListItemSortOption.ItemDesc : ShoppingListItemSortOption.ItemAsc })
         </th>
         <th style="border: 1px solid black; text-align: center">
             Options
         </th>
     </tr>
 
-    @foreach (var item in Model)
+    @foreach (var item in Model.ListItems)
     {
         <tr style="border: 1px solid black;">
             <td style="border: 1px solid black; text-align: center;">

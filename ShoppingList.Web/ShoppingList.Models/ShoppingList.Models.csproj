@@ -154,6 +154,8 @@
     <Compile Include="ShoppingListCreateViewModel.cs" />
     <Compile Include="ShoppingListCriteria.cs" />
     <Compile Include="ShoppingListItemCreateViewModel.cs" />
+    <Compile Include="ShoppingListItemCriteria.cs" />
+    <Compile Include="ShoppingListItemPageViewModel.cs" />
     <Compile Include="ShoppingListItemsViewModel.cs" />
     <Compile Include="ShoppingListNoteCreateViewModel.cs" />
     <Compile Include="ShoppingListNoteViewModel.cs" />
