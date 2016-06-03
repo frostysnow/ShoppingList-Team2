@@ -74,14 +74,14 @@ namespace ShoppingList.Web.Controllers
         [HttpGet]
         public ActionResult EditItem(int id, int ShoppingListId)
         {
-            var detail = _svc.Value.GetItemById(id, ShoppingListId);
+            var update = _svc.Value.GetItemById(id, ShoppingListId);
             var list =
                 new ShoppingListItemEditViewModel
                 {
-                    ItemId = detail.ItemId,
-                    ShoppingListId = detail.ShoppingListId,
-                    Content = detail.Content,
-                    Priority = (ShoppingListItemEditViewModel.PriorityLevel)detail.Priority
+                    ItemId = update.ItemId,
+                    ShoppingListId = update.ShoppingListId,
+                    Content = update.Content,
+                    Priority = (ShoppingListItemEditViewModel.PriorityLevel)update.Priority
                 };
             return View(list);
         }
@@ -127,6 +127,13 @@ namespace ShoppingList.Web.Controllers
         {
             _svc.Value.DeleteItem(id, ShoppingListId);
             return RedirectToAction("ItemIndex", new { id = Url.RequestContext.RouteData.Values["id"] });
+        }
+
+        public ActionResult DeleteChecked(int id, int[] CheckedIds)
+        {
+            if (CheckedIds != null && CheckedIds.Length > 0)
+                _svc.Value.DeleteCheckedIds(CheckedIds);
+            return RedirectToAction("ItemIndex/" + id);
         }
     }
 }

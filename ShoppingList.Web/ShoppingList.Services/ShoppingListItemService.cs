@@ -29,6 +29,7 @@ namespace ShoppingList.Services
                                 ShoppingListId = e.ShoppingListId,
                                 Content = e.Content,
                                 IsChecked = e.IsChecked,
+                                Priority = (ShoppingListItemsViewModel.PriorityLevel)e.Priority
                             })
                         .ToArray();
             }
@@ -64,7 +65,7 @@ namespace ShoppingList.Services
                         ShoppingListId = id,
                         Content = vm.Content,
                         Priority = (ShoppingListItemEntity.PriorityLevel)vm.Priority,
-                        CreatedUtc = DateTimeOffset.Now,
+                        CreatedUtc = DateTimeOffset.UtcNow,
                     };
 
                 ctx.Items.Add(entity);
@@ -85,8 +86,9 @@ namespace ShoppingList.Services
                 entity.ItemId = vm.ItemId;
                 entity.ShoppingListId = vm.ShoppingListId;
                 entity.Content = vm.Content;
+                entity.IsChecked = vm.IsChecked;
                 entity.Priority = (ShoppingListItemEntity.PriorityLevel)vm.Priority;
-                entity.ModifiedUtc = DateTimeOffset.Now;
+                entity.ModifiedUtc = DateTimeOffset.UtcNow;
 
                 return ctx.SaveChanges() == 1;
             }
@@ -112,6 +114,22 @@ namespace ShoppingList.Services
                 foreach (ShoppingListItemEntity item in ctx.Items)
                 {
                     ctx.Items.Remove(item);
+                }
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
+        public bool DeleteCheckedIds(int[] CheckedIds)
+        {
+            using (var ctx = new ShoppingListDbContext())
+            {
+                foreach(var item in ctx.Items)
+                {
+                    foreach(var id in CheckedIds)
+                    {
+                        if (item.ItemId == id)
+                            ctx.Items.Remove(item);
+                    }
                 }
                 return ctx.SaveChanges() == 1;
             }

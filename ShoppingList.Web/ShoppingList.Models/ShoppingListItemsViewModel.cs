@@ -12,7 +12,6 @@ namespace ShoppingList.Models
         [Required]
         public int ItemId { get; set; }
         public string Content { get; set; }
-        [DefaultValue(false)]
         public bool IsChecked { get; set; }
         public int ShoppingListId { get; set; }
         public enum PriorityLevel
@@ -20,10 +19,12 @@ namespace ShoppingList.Models
             [Display(Name = "It can wait")]
             ItCanWait = 0,
             [Display(Name = "Need it soon")]
-            NeedItSoon,
+            NeedItSoon = 1,
             [Display(Name = "Grab it now")]
-            GrabItNow
+            GrabItNow = 2
         }
         public PriorityLevel Priority { get; set; }
+        public DateTimeOffset CreatedUtc { get; set; }
+        public DateTimeOffset ModifiedUtc { get; set; }
     }
 }

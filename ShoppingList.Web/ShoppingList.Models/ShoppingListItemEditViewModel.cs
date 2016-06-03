@@ -12,14 +12,15 @@ namespace ShoppingList.Models
         public int ItemId { get; set; }
         public int ShoppingListId { get; set; }
         public string Content { get; set; }
+        public bool IsChecked { get; set; }
         public enum PriorityLevel
         {
             [Display(Name = "It can wait")]
             ItCanWait = 0,
             [Display(Name = "Need it soon")]
-            NeedItSoon,
+            NeedItSoon = 1,
             [Display(Name = "Grab it now")]
-            GrabItNow
+            GrabItNow = 2
         }
         public PriorityLevel Priority { get; set; }
     }
