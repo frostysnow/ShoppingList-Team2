@@ -12,6 +12,7 @@ namespace ShoppingList.Models
         public int ItemId { get; set; }
         public int ShoppingListId { get; set; }
         public string Content { get; set; }
+        public bool IsChecked { get; set; }
         public enum PriorityLevel
         {
             [Display(Name = "It can wait")]

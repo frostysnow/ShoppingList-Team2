@@ -10,13 +10,9 @@ namespace ShoppingList.Data
     public class ShoppingListItemEntity
     {
         [Key]
-        [Required]
         public int ItemId { get; set; }
         public int ShoppingListId { get; set; }
-        [Required]
         public string Content { get; set; }
-        [Required]
-        [DefaultValue(false)]
         public bool IsChecked { get; set; }
         public enum PriorityLevel
         {
@@ -28,7 +24,6 @@ namespace ShoppingList.Data
             Grabitnow = 2
         }
         public PriorityLevel Priority { get; set; }
-        [Required]
         public DateTimeOffset CreatedUtc { get; set; }
         public DateTimeOffset? ModifiedUtc { get; set; }
     }
