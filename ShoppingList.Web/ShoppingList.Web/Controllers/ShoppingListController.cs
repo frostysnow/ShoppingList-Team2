@@ -26,10 +26,15 @@ namespace ShoppingList.Web.Controllers
         }
 
         [HttpGet]
-        public ActionResult Index()
+        public ActionResult Index(ShoppingListCriteria criteria)
         {
-            var Lists = _svc.Value.GetLists();
-            return View(Lists);
+            var lists = _svc.Value.GetLists(criteria);
+            var viewModel = new ShoppingListPageViewModel()
+            {
+                Lists = lists,
+                Criteria = criteria
+            };
+            return View(viewModel);
         }
 
         [HttpGet]
