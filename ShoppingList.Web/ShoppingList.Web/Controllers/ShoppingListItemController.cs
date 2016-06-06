@@ -28,10 +28,15 @@ namespace ShoppingList.Web.Controllers
         }
 
         [HttpGet]
-        public ActionResult ItemIndex(int id)
+        public ActionResult ItemIndex(int id, ShoppingListItemCriteria criteria)
         {
-            var Items = _svc.Value.GetItems(id);
-            return View(Items);
+            var ShoppingListItems = _svc.Value.GetItems(id, criteria);
+            var viewModel = new ShoppingListItemPageViewModel()
+            {
+                ListItems = ShoppingListItems,
+                Criteria = criteria
+            };
+            return View(viewModel);
         }
 
         //[HttpGet]
