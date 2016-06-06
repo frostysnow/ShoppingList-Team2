@@ -27,7 +27,7 @@
     @foreach (var item in Model.Lists)
     {
         <tr>
-            <td style="border: 1px solid black">
+            <td style="border: 1px solid black; background-color: @item.Color">
                 @Html.ActionLink(item.ListName, "ItemIndex", "ShoppingListItem", new { id = item.ListId }, null)
             </td>
             <td style="border: 1px solid black; text-align: center">
