@@ -60,6 +60,7 @@ namespace ShoppingList.Services
                 var entity =
                     new ShoppingListNoteEntity
                     {
+                        NoteId = vm.NoteId,
                         ShoppingListItemId = id,
                         Body = vm.Body
                     };
@@ -70,7 +71,7 @@ namespace ShoppingList.Services
             }
         }
 
-        public bool DeleteNote(int? noteId, int? itemId)
+        public bool DeleteNote(int noteId, int itemId)
         {
             using (var ctx = new ShoppingListDbContext())
             {
