@@ -19,23 +19,36 @@ namespace ShoppingList.Services
             _userId = userId;
         }
 
-        public IEnumerable<ShoppingListViewModel> GetLists()
+        public IEnumerable<ShoppingListViewModel> GetLists(ShoppingListCriteria criteria)
         {
             using (var ctx = new ShoppingListDbContext())
             {
-                return
-                    ctx
+                var lists = ctx
                         .Lists
-                        .Where(e => e.OwnerId == _userId)
-                        .Select(
-                            e =>
-                                new ShoppingListViewModel
-                                {
-                                    ListId = e.ListId,
-                                    ListName = e.ListName,
-                                    Color = e.Color
-                                })
-                        .ToArray();
+                        .Where(e => e.OwnerId == _userId);
+
+                switch (criteria.SortOption)
+                {
+                    case ShoppingListSortOption.NameAsc:
+                        lists = lists.OrderBy(l => l.ListName);
+                        break;
+                    case ShoppingListSortOption.NameDesc:
+                        lists = lists.OrderByDescending(l => l.ListName);
+                        break;
+                    default:
+                        lists = lists.OrderBy(l => l.ListName);
+                        break;
+                }
+
+                return lists.Select(
+                     e =>
+                         new ShoppingListViewModel
+                         {
+                             ListId = e.ListId,
+                             ListName = e.ListName,
+                             Color = e.Color
+                         }).ToList();
+
             }
         }
 
