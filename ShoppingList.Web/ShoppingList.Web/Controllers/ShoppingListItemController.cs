@@ -131,7 +131,7 @@ namespace ShoppingList.Web.Controllers
         public ActionResult DeletePost(int id, int ShoppingListId)
         {
             _svc.Value.DeleteItem(id, ShoppingListId);
-            return RedirectToAction("ItemIndex", new { id = Url.RequestContext.RouteData.Values["id"] });
+            return RedirectToAction("ItemIndex/" + ShoppingListId);
         }
 
         public ActionResult DeleteChecked(int id, int[] CheckedIds)
