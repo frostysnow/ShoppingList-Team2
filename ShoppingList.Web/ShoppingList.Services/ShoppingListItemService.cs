@@ -13,23 +13,37 @@ namespace ShoppingList.Services
         public ShoppingListItemService()
         { }
 
-        public IEnumerable<ShoppingListItemsViewModel> GetItems(int? id)
+        public IEnumerable<ShoppingListItemsViewModel> GetItems(int id, ShoppingListItemCriteria criteria)
         {
             using (var ctx = new ShoppingListDbContext())
             {
-                return
-                    ctx
-                    .Items
-                    .Where(e => e.ShoppingListId == id)
-                    .Select(
-                        e =>
-                            new ShoppingListItemsViewModel
-                            {
-                                ItemId = e.ItemId,
-                                ShoppingListId = e.ShoppingListId,
-                                Content = e.Content,
-                                IsChecked = e.IsChecked,
-                            })
+                var listItems = ctx
+                        .Items
+                        .Where(e => e.ShoppingListId == id);
+
+                switch (criteria.SortOption)
+                {
+                    case ShoppingListItemSortOption.ItemAsc:
+                        listItems = listItems.OrderBy(i => i.ItemId);
+                        break;
+                    case ShoppingListItemSortOption.ItemDesc:
+                        listItems = listItems.OrderByDescending(i => i.ItemId);
+                        break;
+                    default:
+                        listItems = listItems.OrderBy(i => i.ItemId);
+                        break;
+                }
+
+                return listItems.Select(
+                     e =>
+                         new ShoppingListItemsViewModel
+                         {
+                             ItemId = e.ItemId,
+                             ShoppingListId = e.ShoppingListId,
+                             Content = e.Content,
+                             IsChecked = e.IsChecked,
+                             Priority = (ShoppingListItemsViewModel.PriorityLevel)e.Priority
+                         })
                         .ToArray();
             }
         }
@@ -64,10 +78,30 @@ namespace ShoppingList.Services
                         ShoppingListId = id,
                         Content = vm.Content,
                         Priority = (ShoppingListItemEntity.PriorityLevel)vm.Priority,
-                        CreatedUtc = DateTimeOffset.Now,
+                        CreatedUtc = DateTimeOffset.UtcNow,
                     };
 
                 ctx.Items.Add(entity);
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
+        public bool EditItem(ShoppingListItemEditViewModel vm)
+        {
+            using (var ctx = new ShoppingListDbContext())
+            {
+                var entity =
+                    ctx
+                    .Items
+                    .SingleOrDefault(e => e.ItemId == vm.ItemId && e.ShoppingListId == vm.ShoppingListId);
+
+                entity.ItemId = vm.ItemId;
+                entity.ShoppingListId = vm.ShoppingListId;
+                entity.Content = vm.Content;
+                entity.IsChecked = vm.IsChecked;
+                entity.Priority = (ShoppingListItemEntity.PriorityLevel)vm.Priority;
+                entity.ModifiedUtc = DateTimeOffset.UtcNow;
 
                 return ctx.SaveChanges() == 1;
             }
@@ -93,6 +127,22 @@ namespace ShoppingList.Services
                 foreach (ShoppingListItemEntity item in ctx.Items)
                 {
                     ctx.Items.Remove(item);
+                }
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
+        public bool DeleteCheckedIds(int[] CheckedIds)
+        {
+            using (var ctx = new ShoppingListDbContext())
+            {
+                foreach(var item in ctx.Items)
+                {
+                    foreach(var id in CheckedIds)
+                    {
+                        if (item.ItemId == id)
+                            ctx.Items.Remove(item);
+                    }
                 }
                 return ctx.SaveChanges() == 1;
             }

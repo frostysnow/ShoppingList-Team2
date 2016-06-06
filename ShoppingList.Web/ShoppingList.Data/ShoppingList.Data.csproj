@@ -163,6 +163,10 @@
     <Compile Include="Migrations\201606011750513_ChangedDbBackingModel.Designer.cs">
       <DependentUpon>201606011750513_ChangedDbBackingModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201606031321281_ChangedModelInformation.cs" />
+    <Compile Include="Migrations\201606031321281_ChangedModelInformation.Designer.cs">
+      <DependentUpon>201606031321281_ChangedModelInformation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ShoppingListEntity.cs" />
@@ -178,6 +182,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201606011750513_ChangedDbBackingModel.resx">
       <DependentUpon>201606011750513_ChangedDbBackingModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606031321281_ChangedModelInformation.resx">
+      <DependentUpon>201606031321281_ChangedModelInformation.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
