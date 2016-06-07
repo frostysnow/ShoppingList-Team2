@@ -28,7 +28,7 @@ namespace ShoppingList.Services
                             {
                                 NoteId = e.NoteId,
                                 ShoppingListItemId = e.ShoppingListItemId,
-                                Body = e.Body,
+                                Body = e.Body
                             })
                         .ToArray();
             }

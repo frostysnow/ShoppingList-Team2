@@ -28,23 +28,40 @@ namespace ShoppingList.Web.Controllers
         }
 
         [HttpGet]
-        public ActionResult ItemIndex(int id, ShoppingListItemCriteria criteria)
+        public ActionResult ItemIndex(string sortOrder, string currentFilter, int id)
         {
-            var ShoppingListItems = _svc.Value.GetItems(id, criteria);
-            var viewModel = new ShoppingListItemPageViewModel()
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.ContentsSortOrder = String.IsNullOrEmpty(sortOrder) ? "ContentsDesc" : "";
+            ViewBag.PrioritySortOrder = sortOrder == "Priority" ? "PriorityDesc" : "Priority";
+            ViewBag.IsCheckedSortOrder = sortOrder == "IsChecked" ? "IsCheckedDesc" : "IsChecked";
+            var ShoppingListItems = _svc.Value.GetItems(id);
+            var Items = from items
+                        in ShoppingListItems
+                        select items;
+            switch (sortOrder)
             {
-                ListItems = ShoppingListItems,
-                Criteria = criteria
-            };
-            return View(viewModel);
-        }
+                case "ContentsDesc":
+                    ShoppingListItems = ShoppingListItems.OrderByDescending(s => s.Content);
+                    break;
+                case "Priority":
+                    ShoppingListItems = ShoppingListItems.OrderBy(s => s.Priority);
+                    break;
+                case "PriorityDesc":
+                    ShoppingListItems = ShoppingListItems.OrderByDescending(s => s.Priority);
+                    break;
+                case "IsChecked":
+                    ShoppingListItems = ShoppingListItems.OrderBy(s => s.IsChecked);
+                    break;
+                case "IsCheckedDesc":
+                    ShoppingListItems = ShoppingListItems.OrderByDescending(s => s.IsChecked);
+                    break;
+                default:
+                    ShoppingListItems = ShoppingListItems.OrderBy(s => s.Content);
+                    break;
+            }
 
-        //[HttpGet]
-        //public ActionResult NoteToItemIndex(int id, int ShoppingListItemId)
-        //{
-        //    var Items = _svc2.Value.GetLists(id);
-        //    return View(Items);
-        //}
+            return View(ShoppingListItems);
+        }
 
         [HttpGet]
         public ActionResult CreateItem()
