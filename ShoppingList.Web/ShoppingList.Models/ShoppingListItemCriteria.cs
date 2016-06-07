@@ -8,11 +8,10 @@ namespace ShoppingList.Models
     public class ShoppingListItemCriteria
     {
         public ShoppingListItemSortOption SortOption { get; set; }
-    }
-
-    public enum ShoppingListItemSortOption
-    {
-        ItemAsc = 0,
-        ItemDesc = 1
+        public enum ShoppingListItemSortOption
+        {
+            ItemAsc = 0,
+            ItemDesc = 1
+        }
     }
 }

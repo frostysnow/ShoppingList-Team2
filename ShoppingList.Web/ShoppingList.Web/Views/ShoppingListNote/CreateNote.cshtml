@@ -30,7 +30,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "ItemIndex")
+    @Html.ActionLink("Back to List", "NoteIndex", new { Id = Url.RequestContext.RouteData.Values["id"] })
 </div>
 
 @section Scripts {

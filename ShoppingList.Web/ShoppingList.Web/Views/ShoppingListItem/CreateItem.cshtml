@@ -1,7 +1,7 @@
 ﻿@model ShoppingList.Models.ShoppingListItemCreateViewModel
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "CreateItem";
 }
 
 <h2>Add Item</h2>
@@ -37,7 +37,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "ItemIndex")
+    @Html.ActionLink("Back to List", "ItemIndex", new { Id = Url.RequestContext.RouteData.Values["id"] })
 </div>
 
 @section Scripts {
