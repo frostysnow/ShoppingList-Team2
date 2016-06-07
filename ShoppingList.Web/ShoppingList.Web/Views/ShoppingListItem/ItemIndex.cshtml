@@ -1,8 +1,7 @@
-﻿@using ShoppingList.Models
-@model ShoppingList.Models.ShoppingListItemPageViewModel
+﻿@model IEnumerable<ShoppingList.Models.ShoppingListItemsViewModel>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "ItemIndex";
 }
 
 <div style="display: inline-block;">
@@ -24,17 +23,17 @@
             <input type="checkbox" id="checkAll"
         </th>
         <th style="border: 1px solid black; text-align: center" class="col-lg-6">
-            @Html.ActionLink("Content", "ItemIndex", new { SortOption = Model.Criteria.SortOption == ShoppingListItemSortOption.ItemAsc ? ShoppingListItemSortOption.ItemDesc : ShoppingListItemSortOption.ItemAsc })
+            @Html.ActionLink("Content", "ItemIndex", new { sortOrder = ViewBag.ContentsSortOrder, currentFilter = ViewBag.CurrentFilter, id = Url.RequestContext.RouteData.Values["id"] })
         </th>
         <th style="border: 1px solid black; text-align: center" class="col-lg-3">
-            @Html.ActionLink("Priority", "ItemIndex", new { SortOption = Model.Criteria.SortOption == ShoppingListItemSortOption.ItemAsc ? ShoppingListItemSortOption.ItemDesc : ShoppingListItemSortOption.ItemAsc})
+            @Html.ActionLink("Priority", "ItemIndex", new { sortOrder = ViewBag.PrioritySortOrder, currentFilter = ViewBag.CurrentFilter, id = Url.RequestContext.RouteData.Values["id"] })
         </th>
         <th style="border: 1px solid black; text-align: center" class="col-lg-2">
             Options
         </th>
     </tr>
 
-    @foreach (var item in Model.ListItems)
+    @foreach (var item in Model)
     {
         <tr style="border: 1px solid black;">
             <td style="border: 1px solid black; text-align: center;">
@@ -46,7 +45,7 @@
                 @Html.DisplayFor(modelItem => item.Priority)
             </td>
             <td style="border: 1px solid black; text-align: center;">
-                <button type="submit">@Html.ActionLink("Notes", "NoteIndex", "ShoppingListNote", new { id = item.ShoppingListId}, null)</button>
+                <button type="submit">@Html.ActionLink("Notes", "NoteIndex", "ShoppingListNote", new { id = item.ItemId }, null)</button>
                 <button type="submit">@Html.ActionLink("Edit", "EditItem", "ShoppingListItem", new { id = item.ItemId, ShoppingListId = item.ShoppingListId }, null)</button>
                 <button type="submit">@Html.ActionLink("Delete", "DeleteItem", "ShoppingListItem", new { id = item.ItemId, ShoppingListId = item.ShoppingListId }, null)</button>
             </td>

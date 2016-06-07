@@ -11,6 +11,7 @@ namespace ShoppingList.Models
         [Key]
         public int NoteId { get; set; }
         public int ShoppingListItemId { get; set; }
+        [Required]
         public string Body { get; set; }
         public DateTimeOffset CreatedUtc { get; set; }
     }

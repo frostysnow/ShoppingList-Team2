@@ -34,17 +34,8 @@ namespace ShoppingList.Web.Controllers
         [HttpGet]
         public ActionResult CreateNote()
         {
-            try
-            {
                 var vm = new ShoppingListNoteCreateViewModel();
-
                 return View(vm);
-            }
-            catch (ArgumentException e)
-            {
-                Console.WriteLine("Argument Exception. Redirecting to Shopping List Items.");
-                return RedirectToAction("ItemIndex", "ShoppingListItem", null);
-            }
         }
 
         [HttpPost]

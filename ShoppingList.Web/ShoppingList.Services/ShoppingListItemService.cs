@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using static ShoppingList.Data.IdentityModel;
+using static ShoppingList.Models.ShoppingListItemsViewModel;
 
 namespace ShoppingList.Services
 {
@@ -13,37 +14,26 @@ namespace ShoppingList.Services
         public ShoppingListItemService()
         { }
 
-        public IEnumerable<ShoppingListItemsViewModel> GetItems(int id, ShoppingListItemCriteria criteria)
+        public IEnumerable<ShoppingListItemsViewModel> GetItems(int id)
         {
             using (var ctx = new ShoppingListDbContext())
             {
-                var listItems = ctx
-                        .Items
-                        .Where(e => e.ShoppingListId == id);
-
-                switch (criteria.SortOption)
-                {
-                    case ShoppingListItemSortOption.ItemAsc:
-                        listItems = listItems.OrderBy(i => i.ItemId);
-                        break;
-                    case ShoppingListItemSortOption.ItemDesc:
-                        listItems = listItems.OrderByDescending(i => i.ItemId);
-                        break;
-                    default:
-                        listItems = listItems.OrderBy(i => i.ItemId);
-                        break;
-                }
-
-                return listItems.Select(
-                     e =>
-                         new ShoppingListItemsViewModel
-                         {
-                             ItemId = e.ItemId,
-                             ShoppingListId = e.ShoppingListId,
-                             Content = e.Content,
-                             IsChecked = e.IsChecked,
-                             Priority = (ShoppingListItemsViewModel.PriorityLevel)e.Priority
-                         })
+                return
+                    ctx
+                    .Items
+                    .Where(e => e.ShoppingListId == id)
+                    .Select(
+                        e =>
+                            new ShoppingListItemsViewModel
+                            {
+                                ItemId = e.ItemId,
+                                ShoppingListId = e.ShoppingListId,
+                                Content = e.Content,
+                                IsChecked = e.IsChecked,
+                                Priority = (ShoppingListItemsViewModel.PriorityLevel)e.Priority,
+                                CreatedUtc = e.CreatedUtc,
+                                ModifiedUtc = e.ModifiedUtc
+                            })
                         .ToArray();
             }
         }
