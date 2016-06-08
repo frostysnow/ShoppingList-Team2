@@ -27,18 +27,18 @@ namespace ShoppingList.Services
                         .Lists
                         .Where(e => e.OwnerId == _userId);
 
-                switch (criteria.SortOption)
-                {
-                    case ShoppingListSortOption.NameAsc:
-                        lists = lists.OrderBy(l => l.ListName);
-                        break;
-                    case ShoppingListSortOption.NameDesc:
-                        lists = lists.OrderByDescending(l => l.ListName);
-                        break;
-                    default:
-                        lists = lists.OrderBy(l => l.ListName);
-                        break;
-                }
+                //switch (criteria.SortOption)
+                //{
+                //    case ShoppingListSortOption.NameAsc:
+                //        lists = lists.OrderBy(l => l.ListName);
+                //        break;
+                //    case ShoppingListSortOption.NameDesc:
+                //        lists = lists.OrderByDescending(l => l.ListName);
+                //        break;
+                //    default:
+                //        lists = lists.OrderBy(l => l.ListName);
+                //        break;
+                //}
 
                 return lists.Select(
                      e =>
@@ -46,7 +46,7 @@ namespace ShoppingList.Services
                          {
                              ListId = e.ListId,
                              ListName = e.ListName,
-                             Color = e.Color
+                             Color = e.Color,
                          }).ToList();
 
             }
