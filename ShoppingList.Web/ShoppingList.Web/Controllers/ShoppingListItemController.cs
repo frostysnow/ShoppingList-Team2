@@ -60,7 +60,7 @@ namespace ShoppingList.Web.Controllers
                     break;
             }
 
-            return View(ShoppingListItems);
+            return View("ItemIndex", ShoppingListItems);
         }
 
         [HttpGet]
